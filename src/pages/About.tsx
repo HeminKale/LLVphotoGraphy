@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function About() {
   return (
     <div className="bg-cream-50">
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -12,14 +12,17 @@ export default function About() {
               'url(https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=1920)',
           }}
         >
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-white/10" />
         </div>
 
         <div className="relative z-10 text-center px-6 animate-fade-in">
-          <h1 className="font-elegant text-5xl md:text-7xl text-white mb-4 text-shadow">
+          <p className="font-sans text-[#D4A574] text-sm md:text-base tracking-[0.3em] uppercase mb-6">
+            ABOUT ME
+          </p>
+          <h1 className="font-elegant text-5xl md:text-6xl lg:text-7xl text-[#2D2D2D] mb-6 text-shadow-sm">
             About Me
           </h1>
-          <p className="text-white/90 text-lg md:text-xl font-light">
+          <p className="text-[#4A5568] text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
             Creating art from your most precious moments
           </p>
         </div>

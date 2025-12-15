@@ -42,7 +42,7 @@ export default function Packages() {
 
   return (
     <div className="bg-cream-50">
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -50,14 +50,17 @@ export default function Packages() {
               'url(https://images.pexels.com/photos/265705/pexels-photo-265705.jpeg?auto=compress&cs=tinysrgb&w=1920)',
           }}
         >
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-white/10" />
         </div>
 
         <div className="relative z-10 text-center px-6 animate-fade-in">
-          <h1 className="font-elegant text-5xl md:text-7xl text-white mb-4 text-shadow">
+          <p className="font-sans text-[#D4A574] text-sm md:text-base tracking-[0.3em] uppercase mb-6">
+            INVESTMENT
+          </p>
+          <h1 className="font-elegant text-5xl md:text-6xl lg:text-7xl text-[#2D2D2D] mb-6 text-shadow-sm">
             Investment
           </h1>
-          <p className="text-white/90 text-lg md:text-xl font-light max-w-2xl mx-auto">
+          <p className="text-[#4A5568] text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
             Timeless collections designed to tell your complete love story
           </p>
         </div>
