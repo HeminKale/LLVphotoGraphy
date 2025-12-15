@@ -32,10 +32,10 @@ export default function About() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="order-2 lg:order-1 animate-slide-up">
-              <h2 className="font-elegant text-4xl md:text-5xl text-slate-800 mb-6">
+              <h2 className="font-elegant text-4xl md:text-5xl text-[#2D2D2D] mb-6">
                 Hello, I'm Sarah
               </h2>
-              <div className="space-y-4 text-slate-700 leading-relaxed">
+              <div className="space-y-4 text-[#4A5568] leading-relaxed">
                 <p>
                   For over a decade, I've had the privilege of witnessing and
                   capturing the most beautiful moments of people's lives. Every
@@ -74,7 +74,7 @@ export default function About() {
                   />
                 </div>
                 <div className="absolute -bottom-6 -left-6 bg-white p-6 shadow-lg max-w-xs">
-                  <p className="font-elegant text-lg text-slate-800 italic">
+                  <p className="font-elegant text-lg text-[#2D2D2D] italic">
                     "Every love story deserves to be beautifully told"
                   </p>
                 </div>
@@ -84,35 +84,35 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-16 border-t border-sand-300">
             <div className="text-center">
-              <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Camera className="w-8 h-8 text-rose-600" />
+              <div className="w-16 h-16 bg-[#FAF9F6] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Camera className="w-8 h-8 text-[#D4A574]" />
               </div>
-              <h3 className="font-serif text-3xl text-slate-800 mb-2">250+</h3>
-              <p className="text-slate-600">Weddings Captured</p>
+              <h3 className="font-serif text-3xl text-[#2D2D2D] mb-2">250+</h3>
+              <p className="text-[#6B7280]">Weddings Captured</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-rose-600" />
+              <div className="w-16 h-16 bg-[#FAF9F6] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-8 h-8 text-[#D4A574]" />
               </div>
-              <h3 className="font-serif text-3xl text-slate-800 mb-2">10+</h3>
-              <p className="text-slate-600">Years Experience</p>
+              <h3 className="font-serif text-3xl text-[#2D2D2D] mb-2">10+</h3>
+              <p className="text-[#6B7280]">Years Experience</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Sparkles className="w-8 h-8 text-rose-600" />
+              <div className="w-16 h-16 bg-[#FAF9F6] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Sparkles className="w-8 h-8 text-[#D4A574]" />
               </div>
-              <h3 className="font-serif text-3xl text-slate-800 mb-2">15+</h3>
-              <p className="text-slate-600">Awards Won</p>
+              <h3 className="font-serif text-3xl text-[#2D2D2D] mb-2">15+</h3>
+              <p className="text-[#6B7280]">Awards Won</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-rose-600" />
+              <div className="w-16 h-16 bg-[#FAF9F6] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-[#D4A574]" />
               </div>
-              <h3 className="font-serif text-3xl text-slate-800 mb-2">500+</h3>
-              <p className="text-slate-600">Happy Couples</p>
+              <h3 className="font-serif text-3xl text-[#2D2D2D] mb-2">500+</h3>
+              <p className="text-[#6B7280]">Happy Couples</p>
             </div>
           </div>
         </div>
@@ -120,20 +120,20 @@ export default function About() {
 
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="font-elegant text-4xl md:text-5xl text-slate-800 text-center mb-12">
+          <h2 className="font-elegant text-4xl md:text-5xl text-[#2D2D2D] text-center mb-12">
             My Approach
           </h2>
 
           <div className="space-y-12">
             <div className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center">
-                <span className="font-serif text-rose-600 text-xl">1</span>
+              <div className="flex-shrink-0 w-12 h-12 bg-[#FAF9F6] rounded-full flex items-center justify-center">
+                <span className="font-serif text-[#D4A574] text-xl">1</span>
               </div>
               <div>
-                <h3 className="font-serif text-2xl text-slate-800 mb-3">
+                <h3 className="font-serif text-2xl text-[#2D2D2D] mb-3">
                   Building Trust & Connection
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-[#6B7280] leading-relaxed">
                   Before your wedding day, we'll spend time getting to know each
                   other. I want to understand your love story, your vision, and
                   what matters most to you. This connection allows me to capture
@@ -144,14 +144,14 @@ export default function About() {
             </div>
 
             <div className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center">
-                <span className="font-serif text-rose-600 text-xl">2</span>
+              <div className="flex-shrink-0 w-12 h-12 bg-[#FAF9F6] rounded-full flex items-center justify-center">
+                <span className="font-serif text-[#D4A574] text-xl">2</span>
               </div>
               <div>
-                <h3 className="font-serif text-2xl text-slate-800 mb-3">
+                <h3 className="font-serif text-2xl text-[#2D2D2D] mb-3">
                   Capturing Real Emotions
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-[#6B7280] leading-relaxed">
                   The best photographs happen when you're living in the moment,
                   not posing for it. While I'll guide you for portraits, most of
                   your day will be documented naturally—the way you truly
@@ -161,14 +161,14 @@ export default function About() {
             </div>
 
             <div className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center">
-                <span className="font-serif text-rose-600 text-xl">3</span>
+              <div className="flex-shrink-0 w-12 h-12 bg-[#FAF9F6] rounded-full flex items-center justify-center">
+                <span className="font-serif text-[#D4A574] text-xl">3</span>
               </div>
               <div>
-                <h3 className="font-serif text-2xl text-slate-800 mb-3">
+                <h3 className="font-serif text-2xl text-[#2D2D2D] mb-3">
                   Creating Timeless Art
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-[#6B7280] leading-relaxed">
                   After your wedding, I carefully curate and edit each image to
                   create a cohesive collection that tells your complete story.
                   My editing style is soft, romantic, and timeless—designed to
@@ -180,18 +180,18 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-slate-900 text-white">
+      <section className="py-20 px-6 bg-[#2D2D2D] text-white">
         <div className="container mx-auto text-center max-w-3xl">
           <h2 className="font-elegant text-4xl md:text-5xl mb-6">
             Let's Create Something Beautiful Together
           </h2>
-          <p className="text-sand-300 text-lg mb-8 leading-relaxed">
+          <p className="text-[#E8C5A0] text-lg mb-8 leading-relaxed">
             I'd love to hear about your wedding day and discuss how we can
             capture your unique love story.
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-white text-slate-900 px-8 py-4 rounded-sm hover:bg-cream-100 transition-all duration-300 font-sans text-sm tracking-wider uppercase"
+            className="inline-block bg-white text-[#2D2D2D] px-8 py-4 rounded-sm hover:bg-[#FAF9F6] transition-all duration-300 font-sans text-sm tracking-wider uppercase"
           >
             Get In Touch
           </Link>

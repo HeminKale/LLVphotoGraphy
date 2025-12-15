@@ -103,10 +103,10 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
               <div className="sticky top-24">
-                <h2 className="font-elegant text-4xl text-slate-800 mb-6">
+                <h2 className="font-elegant text-4xl text-[#2D2D2D] mb-6">
                   Get In Touch
                 </h2>
-                <p className="text-slate-600 leading-relaxed mb-8">
+                <p className="text-[#6B7280] leading-relaxed mb-8">
                   Thank you for considering me to capture your wedding day. I
                   would be honored to learn more about your love story and how I
                   can help preserve your most precious moments.
@@ -114,16 +114,16 @@ export default function Contact() {
 
                 <div className="space-y-6">
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-rose-600" />
+                    <div className="w-12 h-12 bg-[#FAF9F6] rounded-full flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-5 h-5 text-[#D4A574]" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 mb-1">
+                      <h3 className="font-semibold text-[#2D2D2D] mb-1">
                         Email
                       </h3>
                       <a
                         href="mailto:hello@eternalmoments.com"
-                        className="text-slate-600 hover:text-rose-600 transition-colors"
+                        className="text-[#6B7280] hover:text-[#D4A574] transition-colors"
                       >
                         hello@eternalmoments.com
                       </a>
@@ -131,16 +131,16 @@ export default function Contact() {
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-rose-600" />
+                    <div className="w-12 h-12 bg-[#FAF9F6] rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-[#D4A574]" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 mb-1">
+                      <h3 className="font-semibold text-[#2D2D2D] mb-1">
                         Phone
                       </h3>
                       <a
                         href="tel:+1234567890"
-                        className="text-slate-600 hover:text-rose-600 transition-colors"
+                        className="text-[#6B7280] hover:text-[#D4A574] transition-colors"
                       >
                         (123) 456-7890
                       </a>
@@ -148,14 +148,14 @@ export default function Contact() {
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-rose-600" />
+                    <div className="w-12 h-12 bg-[#FAF9F6] rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 text-[#D4A574]" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 mb-1">
+                      <h3 className="font-semibold text-[#2D2D2D] mb-1">
                         Location
                       </h3>
-                      <p className="text-slate-600">
+                      <p className="text-[#6B7280]">
                         Based in California
                         <br />
                         Available for travel worldwide
@@ -165,31 +165,31 @@ export default function Contact() {
                 </div>
 
                 <div className="mt-8 p-6 bg-white rounded-sm shadow-sm">
-                  <h3 className="font-serif text-lg text-slate-800 mb-3">
+                  <h3 className="font-serif text-lg text-[#2D2D2D] mb-3">
                     What to Expect
                   </h3>
-                  <ul className="space-y-2 text-slate-600 text-sm">
+                  <ul className="space-y-2 text-[#6B7280] text-sm">
                     <li className="flex gap-2">
-                      <span className="text-rose-600">•</span>
+                      <span className="text-[#D4A574]">•</span>
                       <span>Response within 24-48 hours</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-rose-600">•</span>
+                      <span className="text-[#D4A574]">•</span>
                       <span>Detailed pricing and package information</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-rose-600">•</span>
+                      <span className="text-[#D4A574]">•</span>
                       <span>Portfolio samples matching your style</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-rose-600">•</span>
+                      <span className="text-[#D4A574]">•</span>
                       <span>Option to schedule a consultation call</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="font-serif text-lg text-slate-800 mb-4">
+                  <h3 className="font-serif text-lg text-[#2D2D2D] mb-4">
                     Current Availability
                   </h3>
                   <AvailabilityCalendar />
@@ -206,7 +206,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="brideName"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#2D2D2D] font-medium mb-2"
                     >
                       Bride's Name *
                     </label>
@@ -217,14 +217,14 @@ export default function Contact() {
                       value={formData.brideName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="groomName"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#2D2D2D] font-medium mb-2"
                     >
                       Groom's Name *
                     </label>
@@ -235,7 +235,7 @@ export default function Contact() {
                       value={formData.groomName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
                 </div>
@@ -244,7 +244,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#2D2D2D] font-medium mb-2"
                     >
                       Email Address *
                     </label>
@@ -255,14 +255,14 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#2D2D2D] font-medium mb-2"
                     >
                       Phone Number
                     </label>
@@ -272,7 +272,7 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
                 </div>
@@ -281,7 +281,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="weddingDate"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#2D2D2D] font-medium mb-2"
                     >
                       Wedding Date *
                     </label>
@@ -292,14 +292,14 @@ export default function Contact() {
                       value={formData.weddingDate}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="venueLocation"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#2D2D2D] font-medium mb-2"
                     >
                       Venue Location *
                     </label>
@@ -311,7 +311,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       placeholder="City, State"
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
                 </div>
@@ -319,7 +319,7 @@ export default function Contact() {
                 <div className="mb-6">
                   <label
                     htmlFor="message"
-                    className="block text-slate-700 font-medium mb-2"
+                    className="block text-[#2D2D2D] font-medium mb-2"
                   >
                     Tell Me About Your Wedding *
                   </label>
@@ -331,7 +331,7 @@ export default function Contact() {
                     required
                     rows={6}
                     placeholder="Share your vision, style preferences, or any questions you have..."
-                    className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors resize-none"
+                    className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors resize-none"
                   />
                 </div>
 
@@ -350,7 +350,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-slate-800 text-white py-4 rounded-sm hover:bg-slate-700 transition-all duration-300 font-sans text-sm tracking-wider uppercase flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#2D2D2D] text-white py-4 rounded-sm hover:bg-[#3D3D3D] transition-all duration-300 font-sans text-sm tracking-wider uppercase flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     'Sending...'
@@ -370,10 +370,10 @@ export default function Contact() {
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="font-elegant text-4xl md:text-5xl text-slate-800 mb-4">
+            <h2 className="font-elegant text-4xl md:text-5xl text-[#2D2D2D] mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            <p className="text-[#6B7280] text-lg max-w-2xl mx-auto">
               Common questions about the booking process and what to expect
             </p>
           </div>
