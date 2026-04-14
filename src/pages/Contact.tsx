@@ -119,10 +119,10 @@ export default function Contact() {
                         Email
                       </h3>
                       <a
-                        href="mailto:hello@eternalmoments.com"
+                        href="mailto:hello@lovelightvision.com"
                         className="text-slate-600 hover:text-rose-600 transition-colors"
                       >
-                        hello@eternalmoments.com
+                        hello@lovelightvision.com
                       </a>
                     </div>
                   </div>

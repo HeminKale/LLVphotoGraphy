@@ -42,7 +42,7 @@ export default function Navigation() {
             }`}
           >
             <Camera className="w-7 h-7" />
-            <span>Eternal Moments</span>
+            <span>Love Light Vision</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

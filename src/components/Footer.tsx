@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <Camera className="w-6 h-6" />
-              <span className="font-elegant text-xl">Eternal Moments</span>
+              <span className="font-elegant text-xl">Love Light Vision</span>
             </div>
             <p className="text-sand-300 text-sm leading-relaxed">
               Creating timeless wedding memories through fine-art photography.
@@ -63,19 +63,19 @@ export default function Footer() {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="mailto:hello@eternalmoments.com"
+                href="mailto:hello@lovelightvision.com"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Mail className="w-5 h-5" />
               </a>
             </div>
-            <p className="text-sand-300 text-sm">hello@eternalmoments.com</p>
+            <p className="text-sand-300 text-sm">hello@lovelightvision.com</p>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center">
           <p className="text-sand-400 text-sm">
-            &copy; {new Date().getFullYear()} Eternal Moments Photography. All
+            &copy; {new Date().getFullYear()} Love Light Vision Photography. All
             rights reserved.
           </p>
         </div>
