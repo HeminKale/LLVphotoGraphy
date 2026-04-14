@@ -159,7 +159,7 @@ export default function Home() {
 
             <div className="space-y-6 lg:pr-8">
               <p className="font-elegant text-[#D4A574] text-xl md:text-2xl italic">
-                Welcome to Eternal Moments
+                Welcome to Love Light Vision
               </p>
 
               <h2 className="font-elegant text-4xl md:text-5xl lg:text-6xl text-[#2D2D2D] leading-tight">
@@ -169,7 +169,7 @@ export default function Home() {
               <div className="space-y-5 text-[#6B7280] text-base md:text-lg leading-relaxed">
                 <p>
                   Your love story is unique, profound, and deserves to be told with the
-                  artistry it deserves. At Eternal Moments, we don't just capture
+                  artistry it deserves. At Love Light Vision, we don't just capture
                   weddings—we preserve the essence of your connection, the subtle
                   glances, the gentle touches, and the unguarded laughter that define
                   your journey together.
