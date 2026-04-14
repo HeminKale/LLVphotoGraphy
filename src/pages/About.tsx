@@ -30,7 +30,7 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="order-2 lg:order-1 animate-slide-up">
               <h2 className="font-elegant text-4xl md:text-5xl text-slate-800 mb-6">
-                Hello, I'm Sarah
+                Hello, I'm Ulhas
               </h2>
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 <p>
@@ -66,7 +66,7 @@ export default function About() {
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
                     src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Sarah - Wedding Photographer"
+                    alt="Ulhas - Wedding Photographer"
                     className="w-full h-full object-cover"
                   />
                 </div>

@@ -25,10 +25,12 @@ export default function Navigation() {
     { name: 'Contact', path: '/contact' },
   ];
 
+  const isDarkHeader = isScrolled || location.pathname === '/testimonials';
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
+        isDarkHeader
           ? 'bg-white/95 backdrop-blur-sm shadow-md py-4'
           : 'bg-transparent py-6'
       }`}
@@ -38,7 +40,7 @@ export default function Navigation() {
           <Link
             to="/"
             className={`flex items-center gap-3 font-elegant text-2xl transition-colors ${
-              isScrolled ? 'text-slate-800' : 'text-white'
+              isDarkHeader ? 'text-slate-800' : 'text-white'
             }`}
           >
             <Camera className="w-7 h-7" />
@@ -55,7 +57,7 @@ export default function Navigation() {
                     ? 'border-b-2 pb-1'
                     : ''
                 } ${
-                  isScrolled
+                  isDarkHeader
                     ? 'text-slate-800 border-slate-800'
                     : 'text-white border-white'
                 }`}
@@ -68,7 +70,7 @@ export default function Navigation() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden transition-colors ${
-              isScrolled ? 'text-slate-800' : 'text-white'
+              isDarkHeader ? 'text-slate-800' : 'text-white'
             }`}
           >
             {isMobileMenuOpen ? (
