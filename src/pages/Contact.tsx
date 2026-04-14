@@ -153,7 +153,7 @@ export default function Contact() {
                         Location
                       </h3>
                       <p className="text-slate-600">
-                        Based in California
+                        Based in Jalgaon
                         <br />
                         Available for travel worldwide
                       </p>
@@ -334,11 +334,10 @@ export default function Contact() {
 
                 {submitStatus.type && (
                   <div
-                    className={`mb-6 p-4 rounded-sm ${
-                      submitStatus.type === 'success'
+                    className={`mb-6 p-4 rounded-sm ${submitStatus.type === 'success'
                         ? 'bg-green-50 text-green-800 border border-green-200'
                         : 'bg-red-50 text-red-800 border border-red-200'
-                    }`}
+                      }`}
                   >
                     {submitStatus.message}
                   </div>
