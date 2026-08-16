@@ -21,3 +21,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Original full-resolution photo files (kept locally, never committed)
+/raw-photos-originals/

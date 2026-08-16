@@ -1,32 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Heart, Star, Quote } from 'lucide-react';
-import { supabase } from '../lib/supabase';
-
-interface Testimonial {
-  id: string;
-  couple_names: string;
-  quote: string;
-  wedding_date: string;
-  featured: boolean;
-}
+import { testimonials as testimonialData, Testimonial } from '../data/testimonials';
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
-    fetchTestimonials();
+    const sorted = [...testimonialData].sort(
+      (a, b) => new Date(b.wedding_date).getTime() - new Date(a.wedding_date).getTime()
+    );
+    setTestimonials(sorted);
   }, []);
-
-  const fetchTestimonials = async () => {
-    const { data, error } = await supabase
-      .from('testimonials')
-      .select('*')
-      .order('wedding_date', { ascending: false });
-
-    if (!error && data) {
-      setTestimonials(data);
-    }
-  };
 
   return (
     <div className="bg-cream-50 pt-32 pb-24">

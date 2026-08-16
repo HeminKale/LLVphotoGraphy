@@ -1,44 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Sparkles } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { packages as packageData, Package } from '../data/packages';
 import FAQ from '../components/FAQ';
-
-interface Package {
-  id: string;
-  name: string;
-  description: string;
-  hours_coverage: number;
-  deliverables: string;
-  starting_price: number;
-  featured: boolean;
-}
 
 export default function Packages() {
   const [packages, setPackages] = useState<Package[]>([]);
 
   useEffect(() => {
-    fetchPackages();
+    setPackages([...packageData].sort((a, b) => a.order_position - b.order_position));
   }, []);
-
-  const fetchPackages = async () => {
-    const { data, error } = await supabase
-      .from('packages')
-      .select('*')
-      .order('order_position', { ascending: true });
-
-    if (!error && data) {
-      setPackages(data);
-    }
-  };
-
-  const parseDeliverables = (deliverables: string): string[] => {
-    try {
-      return JSON.parse(deliverables);
-    } catch {
-      return [];
-    }
-  };
 
   return (
     <div className="bg-cream-50">
@@ -112,16 +83,14 @@ export default function Packages() {
                   </div>
 
                   <div className="space-y-3 mb-8">
-                    {parseDeliverables(pkg.deliverables).map(
-                      (item: string, i: number) => (
-                        <div key={i} className="flex gap-3 items-start">
-                          <div className="flex-shrink-0 w-5 h-5 bg-rose-100 rounded-full flex items-center justify-center mt-0.5">
-                            <Check className="w-3 h-3 text-rose-600" />
-                          </div>
-                          <span className="text-slate-700 text-sm">{item}</span>
+                    {pkg.deliverables.map((item: string, i: number) => (
+                      <div key={i} className="flex gap-3 items-start">
+                        <div className="flex-shrink-0 w-5 h-5 bg-rose-100 rounded-full flex items-center justify-center mt-0.5">
+                          <Check className="w-3 h-3 text-rose-600" />
                         </div>
-                      )
-                    )}
+                        <span className="text-slate-700 text-sm">{item}</span>
+                      </div>
+                    ))}
                   </div>
 
                   <Link
