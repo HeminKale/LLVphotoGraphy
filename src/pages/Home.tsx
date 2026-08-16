@@ -1,37 +1,41 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Heart, Star, Users, Sparkles } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { testimonials as testimonialData, Testimonial } from '../data/testimonials';
+import { galleries as galleryData, Gallery } from '../data/galleries';
+import welcomeImage from '../assets/gallery/family-shoot/06.jpg';
+import preWeddingHero from '../assets/gallery/pre-wedding/07.jpg';
 
-interface Testimonial {
-  id: string;
-  couple_names: string;
-  quote: string;
-  wedding_date: string;
-}
-
-interface Gallery {
-  id: string;
-  title: string;
-  image_url: string;
-  category: string;
-}
+const FEATURED_CATEGORIES = [
+  'Wedding',
+  'Pre-Wedding',
+  'Modeling',
+  'Mehndhi',
+  'Family Shoot',
+  'Babyshoot',
+];
 
 const heroImages = [
   {
-    url: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    title: 'Turning Love Stories',
-    subtitle: 'Into Timeless Memories',
+    url: preWeddingHero,
+    title: 'Your Forever Story',
+    subtitle: 'Begins Before "I Do"',
+    description:
+      'Pre-wedding sessions that capture your love in its most playful, romantic light',
   },
   {
     url: 'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1920',
     title: 'Capturing Every',
     subtitle: 'Beautiful Moment',
+    description:
+      'Fine-art wedding photography that captures the emotion, beauty, and romance of your special day',
   },
   {
     url: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1920',
     title: 'Where Love Becomes',
     subtitle: 'Eternal Art',
+    description:
+      'Fine-art wedding photography that captures the emotion, beauty, and romance of your special day',
   },
 ];
 
@@ -42,8 +46,17 @@ export default function Home() {
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
 
   useEffect(() => {
-    fetchTestimonials();
-    fetchFeaturedImages();
+    setTestimonials(testimonialData.filter((t) => t.featured).slice(0, 3));
+
+    const onePerCategory = FEATURED_CATEGORIES.map((category) => {
+      const options = galleryData.filter(
+        (item) => item.category === category && item.image_url !== welcomeImage
+      );
+      if (options.length === 0) return undefined;
+      return options[Math.floor(Math.random() * options.length)];
+    }).filter((item): item is Gallery => Boolean(item));
+
+    setFeaturedImages(onePerCategory);
   }, []);
 
   useEffect(() => {
@@ -61,31 +74,6 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  const fetchTestimonials = async () => {
-    const { data, error } = await supabase
-      .from('testimonials')
-      .select('*')
-      .eq('featured', true)
-      .order('created_at', { ascending: false })
-      .limit(3);
-
-    if (!error && data) {
-      setTestimonials(data);
-    }
-  };
-
-  const fetchFeaturedImages = async () => {
-    const { data, error } = await supabase
-      .from('galleries')
-      .select('*')
-      .order('order_position', { ascending: true })
-      .limit(6);
-
-    if (!error && data) {
-      setFeaturedImages(data);
-    }
-  };
 
   return (
     <div className="bg-cream-50">
@@ -106,15 +94,14 @@ export default function Home() {
           </div>
         ))}
 
-        <div className="relative z-10 text-center px-6 animate-fade-in">
+        <div className="relative z-10 text-center px-6 translate-y-16 md:translate-y-24 animate-fade-in">
           <h1 className="font-elegant text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-tight text-shadow">
             {heroImages[currentHeroSlide].title}
             <br />
             {heroImages[currentHeroSlide].subtitle}
           </h1>
           <p className="text-white/90 text-lg md:text-xl font-light mb-8 max-w-2xl mx-auto">
-            Fine-art wedding photography that captures the emotion, beauty, and
-            romance of your special day
+            {heroImages[currentHeroSlide].description}
           </p>
           <Link
             to="/portfolio"
@@ -151,8 +138,8 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="relative overflow-hidden rounded-sm shadow-2xl">
               <img
-                src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Couple walking together"
+                src={welcomeImage}
+                alt="Love Light Vision family shoot"
                 className="w-full aspect-[3/4] object-cover"
               />
             </div>
@@ -213,7 +200,8 @@ export default function Home() {
               Capturing Moments That Last Forever
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
-              Every wedding tells a unique love story. My approach combines
+              From weddings and pre-wedding shoots to mehndi, maternity, family
+              portraits, and more—every story is unique. My approach combines
               editorial elegance with authentic emotion, creating images that
               feel both timeless and deeply personal.
             </p>
