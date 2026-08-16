@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight, Sparkles, Heart, Church, Users, Baby, Camera, Flower2, Gem, Sun } from 'lucide-react';
 import { galleries as galleryData, Gallery } from '../data/galleries';
-import portfolioBanner from '../assets/gallery/mehndhi/02.jpg';
 
 const categories = [
   { name: 'All Work', value: 'All', icon: Sparkles },
@@ -93,20 +92,21 @@ export default function Portfolio() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url(${portfolioBanner})`,
+            backgroundImage:
+              'url(https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1920)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/55" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-white/10" />
         </div>
 
         <div className="relative z-10 text-center px-6 animate-fade-in">
-          <p className="font-sans text-[#E8C5A0] text-sm md:text-base tracking-[0.3em] uppercase mb-6 text-shadow-sm">
+          <p className="font-sans text-[#D4A574] text-sm md:text-base tracking-[0.3em] uppercase mb-6">
             PORTFOLIO
           </p>
-          <h1 className="font-elegant text-5xl md:text-6xl lg:text-7xl text-white mb-6 text-shadow">
+          <h1 className="font-elegant text-5xl md:text-6xl lg:text-7xl text-[#2D2D2D] mb-6 text-shadow-sm">
             Celebration Moments
           </h1>
-          <p className="text-white/90 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed text-shadow-sm">
+          <p className="text-[#4A5568] text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
             From weddings and engagements to family portraits and beyond—capturing the
             <br className="hidden md:block" />
             laughter, connection, and moments that make every story uniquely yours.

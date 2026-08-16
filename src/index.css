@@ -15,16 +15,8 @@
 }
 
 @layer utilities {
-  .text-shadow-sm {
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
-  }
-
   .text-shadow {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  }
-
-  .text-shadow-lg {
-    text-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .parallax {
