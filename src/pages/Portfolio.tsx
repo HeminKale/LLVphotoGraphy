@@ -39,16 +39,16 @@ export default function Portfolio() {
 
   const getCategoryBadgeStyle = (category: string) => {
     const styles: Record<string, string> = {
-      Wedding: 'bg-[#E8C5A0] text-[#2D2D2D]',
-      'Pre-Wedding': 'bg-[#D4A574] text-white',
-      Engagement: 'bg-[#F4E6E1] text-[#2D2D2D]',
-      Mehndhi: 'bg-[#D4A574] text-white',
-      Maternity: 'bg-[#F4E6E1] text-[#2D2D2D] border border-[#E8C5A0]',
-      Babyshoot: 'bg-[#FAF9F6] text-[#2D2D2D] border border-[#E8C5A0]',
-      'Family Shoot': 'bg-[#E8C5A0] text-[#2D2D2D]',
+      Wedding: 'bg-[#8F1ED2]/20 text-[#F1EDFB]',
+      'Pre-Wedding': 'bg-[#8F1ED2] text-white',
+      Engagement: 'bg-white/5 text-[#F1EDFB]',
+      Mehndhi: 'bg-[#8F1ED2] text-white',
+      Maternity: 'bg-white/5 text-[#F1EDFB] border border-[#8F1ED2]/40',
+      Babyshoot: 'bg-[#1C1330] text-[#F1EDFB] border border-[#8F1ED2]/40',
+      'Family Shoot': 'bg-[#8F1ED2]/20 text-[#F1EDFB]',
       Modeling: 'bg-[#2D2D2D] text-white',
     };
-    return styles[category] || 'bg-[#E8C5A0] text-[#2D2D2D]';
+    return styles[category] || 'bg-[#8F1ED2]/20 text-[#F1EDFB]';
   };
 
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
@@ -88,7 +88,7 @@ export default function Portfolio() {
   const activeImage = lightboxIndex !== null ? filteredGalleries[lightboxIndex] : null;
 
   return (
-    <div className="bg-cream-50">
+    <div className="bg-[#100B21]">
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -100,7 +100,7 @@ export default function Portfolio() {
         </div>
 
         <div className="relative z-10 text-center px-6 animate-fade-in">
-          <p className="font-sans text-[#E8C5A0] text-sm md:text-base tracking-[0.3em] uppercase mb-6 text-shadow-sm">
+          <p className="font-sans text-[#F272D6] text-sm md:text-base tracking-[0.3em] uppercase mb-6 text-shadow-sm">
             PORTFOLIO
           </p>
           <h1 className="font-elegant text-5xl md:text-6xl lg:text-7xl text-white mb-6 text-shadow">
@@ -114,7 +114,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-[#1C1330]">
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-wrap justify-center gap-2 mb-16">
             {categories.map((category) => {
@@ -125,8 +125,8 @@ export default function Portfolio() {
                   onClick={() => setActiveCategory(category.value)}
                   className={`flex items-center gap-1.5 px-4 py-2 rounded-sm font-sans text-xs tracking-wide transition-all duration-300 ${
                     activeCategory === category.value
-                      ? 'bg-[#D4A574] text-white shadow-md'
-                      : 'bg-[#FAF9F6] text-[#2D2D2D] hover:bg-[#F4E6E1]'
+                      ? 'bg-[#8F1ED2] text-white shadow-md'
+                      : 'bg-white/5 text-[#F1EDFB] hover:bg-white/10'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -141,7 +141,7 @@ export default function Portfolio() {
               <button
                 key={photo.id}
                 onClick={() => setLightboxIndex(index)}
-                className="group relative block w-full mb-6 break-inside-avoid overflow-hidden rounded-sm bg-sand-100 animate-fade-in text-left"
+                className="group relative block w-full mb-6 break-inside-avoid overflow-hidden rounded-sm bg-white/5 animate-fade-in text-left"
                 style={{ animationDelay: `${(index % 9) * 0.08}s` }}
               >
                 <img
@@ -169,7 +169,7 @@ export default function Portfolio() {
 
           {filteredGalleries.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-[#6B7280] text-lg font-light">
+              <p className="text-[#A9A0C4] text-lg font-light">
                 No celebrations found in this category.
               </p>
             </div>

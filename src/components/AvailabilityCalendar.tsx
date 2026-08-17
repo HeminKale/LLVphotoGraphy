@@ -67,13 +67,13 @@ export default function AvailabilityCalendar() {
           isPast
             ? 'text-sand-300 cursor-not-allowed'
             : isBooked
-            ? 'bg-rose-100 text-rose-700 font-semibold'
-            : 'text-slate-700 hover:bg-cream-200'
+            ? 'bg-[#8F1ED2]/15 text-[#8F1ED2] font-semibold'
+            : 'text-[#D9D2E8] hover:bg-white/5'
         } transition-colors rounded-sm`}
       >
         {day}
         {isBooked && !isPast && (
-          <X className="w-3 h-3 absolute top-1 right-1 text-rose-500" />
+          <X className="w-3 h-3 absolute top-1 right-1 text-[#8F1ED2]" />
         )}
         {!isBooked && !isPast && (
           <Check className="w-3 h-3 absolute top-1 right-1 text-green-500 opacity-0 hover:opacity-100" />
@@ -83,28 +83,28 @@ export default function AvailabilityCalendar() {
   }
 
   return (
-    <div className="bg-white p-6 rounded-sm shadow-sm">
+    <div className="bg-[#1C1330] p-6 rounded-sm shadow-sm">
       <div className="flex items-center justify-between mb-6">
         <button
           onClick={previousMonth}
-          className="p-2 hover:bg-sand-100 rounded-full transition-colors"
+          className="p-2 hover:bg-white/5 rounded-full transition-colors"
         >
-          <ChevronLeft className="w-5 h-5 text-slate-700" />
+          <ChevronLeft className="w-5 h-5 text-[#D9D2E8]" />
         </button>
-        <h3 className="font-serif text-xl text-slate-800">
+        <h3 className="font-serif text-xl text-[#F1EDFB]">
           {monthName} {year}
         </h3>
         <button
           onClick={nextMonth}
-          className="p-2 hover:bg-sand-100 rounded-full transition-colors"
+          className="p-2 hover:bg-white/5 rounded-full transition-colors"
         >
-          <ChevronRight className="w-5 h-5 text-slate-700" />
+          <ChevronRight className="w-5 h-5 text-[#D9D2E8]" />
         </button>
       </div>
 
       <div className="grid grid-cols-7 gap-2 mb-2">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-          <div key={day} className="text-center text-xs font-semibold text-slate-600">
+          <div key={day} className="text-center text-xs font-semibold text-[#A9A0C4]">
             {day}
           </div>
         ))}
@@ -112,16 +112,16 @@ export default function AvailabilityCalendar() {
 
       <div className="grid grid-cols-7 gap-2">{days}</div>
 
-      <div className="mt-6 pt-6 border-t border-sand-200 space-y-2">
+      <div className="mt-6 pt-6 border-t border-[#332950] space-y-2">
         <div className="flex items-center gap-2 text-sm">
-          <div className="w-4 h-4 bg-rose-100 rounded-sm" />
-          <span className="text-slate-600">Date booked</span>
+          <div className="w-4 h-4 bg-[#8F1ED2]/15 rounded-sm" />
+          <span className="text-[#A9A0C4]">Date booked</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <div className="w-4 h-4 bg-white border border-sand-300 rounded-sm" />
-          <span className="text-slate-600">Date available</span>
+          <div className="w-4 h-4 bg-transparent border border-[#D9D2E8]/40 rounded-sm" />
+          <span className="text-[#A9A0C4]">Date available</span>
         </div>
-        <p className="text-xs text-slate-500 mt-3">
+        <p className="text-xs text-[#8B82A8] mt-3">
           Calendar shows general availability. Specific dates confirmed after inquiry.
         </p>
       </div>
