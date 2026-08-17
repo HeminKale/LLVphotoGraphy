@@ -38,7 +38,7 @@ export default function Navigation() {
       location.pathname === path ? 'border-b-2 pb-1' : ''
     } ${
       isDarkHeader
-        ? 'text-slate-800 border-slate-800'
+        ? 'text-[#18181F] border-[#8F1ED2]'
         : 'text-white border-white text-shadow-sm'
     }`;
 
@@ -65,7 +65,7 @@ export default function Navigation() {
             <div
               className={`rounded-lg transition-all duration-500 ${
                 isDarkHeader
-                  ? 'bg-slate-900/90 backdrop-blur-sm px-4 py-1.5 shadow-md'
+                  ? 'bg-[#150E2B]/90 backdrop-blur-sm px-4 py-1.5 shadow-md'
                   : 'px-1 py-1'
               }`}
             >
@@ -92,7 +92,7 @@ export default function Navigation() {
             <div
               className={`rounded-lg transition-all duration-500 ${
                 isDarkHeader
-                  ? 'bg-slate-900/90 backdrop-blur-sm px-4 py-1.5 shadow-md'
+                  ? 'bg-[#150E2B]/90 backdrop-blur-sm px-4 py-1.5 shadow-md'
                   : 'px-1 py-1'
               }`}
             >
@@ -107,7 +107,7 @@ export default function Navigation() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`absolute right-0 transition-colors ${
-              isDarkHeader ? 'text-slate-800' : 'text-white drop-shadow-md'
+              isDarkHeader ? 'text-[#18181F]' : 'text-white drop-shadow-md'
             }`}
           >
             {isMobileMenuOpen ? (
@@ -127,10 +127,10 @@ export default function Navigation() {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`font-sans text-sm tracking-wide uppercase transition-colors hover:text-rose-600 ${
+                className={`font-sans text-sm tracking-wide uppercase transition-colors hover:text-[#8F1ED2] ${
                   location.pathname === link.path
-                    ? 'text-rose-600 font-semibold'
-                    : 'text-slate-800'
+                    ? 'text-[#8F1ED2] font-semibold'
+                    : 'text-[#18181F]'
                 }`}
               >
                 {link.name}

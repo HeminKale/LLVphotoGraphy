@@ -61,13 +61,13 @@ export default function FAQ() {
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-sand-50 transition-colors"
+              className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#F0EEF9] transition-colors"
             >
-              <span className="font-serif text-lg text-slate-800 pr-8">
+              <span className="font-serif text-lg text-[#18181F] pr-8">
                 {faq.question}
               </span>
               <ChevronDown
-                className={`w-5 h-5 text-rose-600 flex-shrink-0 transition-transform duration-300 ${
+                className={`w-5 h-5 text-[#8F1ED2] flex-shrink-0 transition-transform duration-300 ${
                   openIndex === index ? 'rotate-180' : ''
                 }`}
               />
@@ -77,7 +77,7 @@ export default function FAQ() {
                 openIndex === index ? 'max-h-96' : 'max-h-0'
               }`}
             >
-              <div className="px-6 pb-5 text-slate-600 leading-relaxed">
+              <div className="px-6 pb-5 text-[#5F5F72] leading-relaxed">
                 {faq.answer}
               </div>
             </div>
