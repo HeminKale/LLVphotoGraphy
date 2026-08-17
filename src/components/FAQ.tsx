@@ -57,17 +57,17 @@ export default function FAQ() {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-white rounded-sm shadow-sm overflow-hidden"
+            className="bg-[#1E1D1F] rounded-sm shadow-sm overflow-hidden"
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-sand-50 transition-colors"
+              className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
             >
-              <span className="font-serif text-lg text-slate-800 pr-8">
+              <span className="font-serif text-lg text-[#F5F0E8] pr-8">
                 {faq.question}
               </span>
               <ChevronDown
-                className={`w-5 h-5 text-rose-600 flex-shrink-0 transition-transform duration-300 ${
+                className={`w-5 h-5 text-[#D4A574] flex-shrink-0 transition-transform duration-300 ${
                   openIndex === index ? 'rotate-180' : ''
                 }`}
               />
@@ -77,7 +77,7 @@ export default function FAQ() {
                 openIndex === index ? 'max-h-96' : 'max-h-0'
               }`}
             >
-              <div className="px-6 pb-5 text-slate-600 leading-relaxed">
+              <div className="px-6 pb-5 text-[#B8AFA0] leading-relaxed">
                 {faq.answer}
               </div>
             </div>

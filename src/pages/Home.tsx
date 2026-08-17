@@ -76,7 +76,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-cream-50">
+    <div className="bg-[#121113]">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {heroImages.map((hero, index) => (
           <div
@@ -105,7 +105,7 @@ export default function Home() {
           </p>
           <Link
             to="/portfolio"
-            className="inline-flex items-center gap-2 bg-white text-slate-800 px-8 py-4 rounded-sm hover:bg-cream-100 transition-all duration-300 font-sans text-sm tracking-wider uppercase"
+            className="inline-flex items-center gap-2 bg-[#F5F0E8] text-[#121113] px-8 py-4 rounded-sm hover:bg-[#E5DCC8] transition-all duration-300 font-sans text-sm tracking-wider uppercase"
           >
             View Portfolio
             <ArrowRight className="w-4 h-4" />
@@ -119,7 +119,7 @@ export default function Home() {
               onClick={() => setCurrentHeroSlide(index)}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 index === currentHeroSlide
-                  ? 'bg-white w-8'
+                  ? 'bg-[#D4A574] w-8'
                   : 'bg-white/50'
               }`}
             />
@@ -133,7 +133,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6 bg-[#1E1D1F]">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="relative overflow-hidden rounded-sm shadow-2xl">
@@ -149,11 +149,11 @@ export default function Home() {
                 Welcome to Love Light Vision
               </p>
 
-              <h2 className="font-elegant text-4xl md:text-5xl lg:text-6xl text-[#2D2D2D] leading-tight">
+              <h2 className="font-elegant text-4xl md:text-5xl lg:text-6xl text-[#F5F0E8] leading-tight">
                 Where Authentic Moments Become Heirloom Art
               </h2>
 
-              <div className="space-y-5 text-[#6B7280] text-base md:text-lg leading-relaxed">
+              <div className="space-y-5 text-[#B8AFA0] text-base md:text-lg leading-relaxed">
                 <p>
                   Your love story is unique, profound, and deserves to be told with the
                   artistry it deserves. At Love Light Vision, we don't just capture
@@ -183,7 +183,7 @@ export default function Home() {
                 </Link>
                 <Link
                   to="/portfolio"
-                  className="inline-flex items-center gap-2 bg-white text-[#2D2D2D] border-2 border-[#E8C5A0] px-8 py-4 rounded-sm hover:bg-[#FAF9F6] transition-all duration-300 font-sans text-sm tracking-wider"
+                  className="inline-flex items-center gap-2 bg-transparent text-[#F5F0E8] border-2 border-[#E8C5A0] px-8 py-4 rounded-sm hover:bg-[#E8C5A0]/10 transition-all duration-300 font-sans text-sm tracking-wider"
                 >
                   View Our Work
                 </Link>
@@ -193,13 +193,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-cream-50">
+      <section className="py-24 px-6 bg-[#121113]">
         <div className="container mx-auto">
           <div className="text-center mb-16 animate-slide-up">
-            <h2 className="font-elegant text-4xl md:text-5xl text-slate-800 mb-4">
+            <h2 className="font-elegant text-4xl md:text-5xl text-[#F5F0E8] mb-4">
               Capturing Moments That Last Forever
             </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#B8AFA0] text-lg max-w-2xl mx-auto leading-relaxed">
               From weddings and pre-wedding shoots to mehndi, maternity, family
               portraits, and more—every story is unique. My approach combines
               editorial elegance with authentic emotion, creating images that
@@ -211,7 +211,7 @@ export default function Home() {
             {featuredImages.map((image, index) => (
               <div
                 key={image.id}
-                className="group relative overflow-hidden aspect-[4/5] bg-sand-200 animate-fade-in"
+                className="group relative overflow-hidden aspect-[4/5] bg-[#1E1D1F] animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <img
@@ -231,7 +231,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               to="/portfolio"
-              className="inline-flex items-center gap-2 text-slate-800 border-2 border-slate-800 px-8 py-3 rounded-sm hover:bg-slate-800 hover:text-white transition-all duration-300 font-sans text-sm tracking-wider uppercase"
+              className="inline-flex items-center gap-2 text-[#F5F0E8] border-2 border-[#D4A574] px-8 py-3 rounded-sm hover:bg-[#D4A574] hover:text-[#121113] transition-all duration-300 font-sans text-sm tracking-wider uppercase"
             >
               Explore Full Portfolio
               <ArrowRight className="w-4 h-4" />
@@ -240,13 +240,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6 bg-[#1E1D1F]">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-20">
-            <h2 className="font-elegant text-4xl md:text-5xl lg:text-6xl text-[#2D2D2D] mb-6">
+            <h2 className="font-elegant text-4xl md:text-5xl lg:text-6xl text-[#F5F0E8] mb-6">
               Love Stories in Their Own Words
             </h2>
-            <p className="text-[#6B7280] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-[#B8AFA0] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
               Hear from the couples who trusted us to capture their most precious moments
               and create timeless memories
             </p>
@@ -254,49 +254,49 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#FAF9F6] mb-6 group-hover:bg-[#D4A574] transition-colors duration-300">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1E1D1F] mb-6 group-hover:bg-[#D4A574] transition-colors duration-300">
                 <Heart className="w-8 h-8 text-[#D4A574] group-hover:text-white transition-colors duration-300" />
               </div>
-              <div className="font-elegant text-5xl md:text-6xl text-[#2D2D2D] mb-2">
+              <div className="font-elegant text-5xl md:text-6xl text-[#F5F0E8] mb-2">
                 250<sup className="text-3xl">+</sup>
               </div>
-              <p className="text-[#6B7280] text-sm md:text-base font-medium">
+              <p className="text-[#B8AFA0] text-sm md:text-base font-medium">
                 Love Stories Captured
               </p>
             </div>
 
             <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#FAF9F6] mb-6 group-hover:bg-[#D4A574] transition-colors duration-300">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1E1D1F] mb-6 group-hover:bg-[#D4A574] transition-colors duration-300">
                 <Star className="w-8 h-8 text-[#D4A574] group-hover:text-white transition-colors duration-300" />
               </div>
-              <div className="font-elegant text-5xl md:text-6xl text-[#2D2D2D] mb-2">
+              <div className="font-elegant text-5xl md:text-6xl text-[#F5F0E8] mb-2">
                 4.9
               </div>
-              <p className="text-[#6B7280] text-sm md:text-base font-medium">
+              <p className="text-[#B8AFA0] text-sm md:text-base font-medium">
                 Average Rating
               </p>
             </div>
 
             <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#FAF9F6] mb-6 group-hover:bg-[#D4A574] transition-colors duration-300">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1E1D1F] mb-6 group-hover:bg-[#D4A574] transition-colors duration-300">
                 <Users className="w-8 h-8 text-[#D4A574] group-hover:text-white transition-colors duration-300" />
               </div>
-              <div className="font-elegant text-5xl md:text-6xl text-[#2D2D2D] mb-2">
+              <div className="font-elegant text-5xl md:text-6xl text-[#F5F0E8] mb-2">
                 500<sup className="text-3xl">+</sup>
               </div>
-              <p className="text-[#6B7280] text-sm md:text-base font-medium">
+              <p className="text-[#B8AFA0] text-sm md:text-base font-medium">
                 Happy Couples
               </p>
             </div>
 
             <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#FAF9F6] mb-6 group-hover:bg-[#D4A574] transition-colors duration-300">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1E1D1F] mb-6 group-hover:bg-[#D4A574] transition-colors duration-300">
                 <Sparkles className="w-8 h-8 text-[#D4A574] group-hover:text-white transition-colors duration-300" />
               </div>
-              <div className="font-elegant text-5xl md:text-6xl text-[#2D2D2D] mb-2">
+              <div className="font-elegant text-5xl md:text-6xl text-[#F5F0E8] mb-2">
                 12<sup className="text-3xl">+</sup>
               </div>
-              <p className="text-[#6B7280] text-sm md:text-base font-medium">
+              <p className="text-[#B8AFA0] text-sm md:text-base font-medium">
                 Years of Excellence
               </p>
             </div>
@@ -305,14 +305,14 @@ export default function Home() {
       </section>
 
       {testimonials.length > 0 && (
-        <section className="py-24 px-6 bg-cream-50">
+        <section className="py-24 px-6 bg-[#121113]">
           <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-12">
-              <Heart className="w-12 h-12 text-rose-400 mx-auto mb-4" />
-              <h2 className="font-elegant text-4xl md:text-5xl text-slate-800 mb-2">
+              <Heart className="w-12 h-12 text-[#D4A574] mx-auto mb-4" />
+              <h2 className="font-elegant text-4xl md:text-5xl text-[#F5F0E8] mb-2">
                 Kind Words
               </h2>
-              <p className="text-slate-600">From couples we've had the honor to work with</p>
+              <p className="text-[#B8AFA0]">From couples we've had the honor to work with</p>
             </div>
 
             <div className="relative min-h-[300px] flex items-center">
@@ -324,14 +324,14 @@ export default function Home() {
                   }`}
                 >
                   <blockquote className="text-center">
-                    <p className="font-elegant text-2xl md:text-3xl text-slate-700 mb-6 leading-relaxed italic">
+                    <p className="font-elegant text-2xl md:text-3xl text-[#D9D2C5] mb-6 leading-relaxed italic">
                       "{testimonial.quote}"
                     </p>
                     <footer className="font-sans">
-                      <p className="text-slate-800 font-medium text-lg">
+                      <p className="text-[#F5F0E8] font-medium text-lg">
                         {testimonial.couple_names}
                       </p>
-                      <p className="text-slate-500 text-sm">
+                      <p className="text-[#9C9284] text-sm">
                         {new Date(testimonial.wedding_date).toLocaleDateString('en-US', {
                           month: 'long',
                           day: 'numeric',
@@ -351,8 +351,8 @@ export default function Home() {
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === currentTestimonial
-                      ? 'bg-rose-500 w-8'
-                      : 'bg-sand-300'
+                      ? 'bg-[#D4A574] w-8'
+                      : 'bg-[#3A362F]'
                   }`}
                 />
               ))}
@@ -372,7 +372,7 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-sm hover:bg-cream-100 transition-all duration-300 font-sans text-sm tracking-wider uppercase"
+            className="inline-flex items-center gap-2 bg-[#F5F0E8] text-[#121113] px-8 py-4 rounded-sm hover:bg-[#E5DCC8] transition-all duration-300 font-sans text-sm tracking-wider uppercase"
           >
             Get In Touch
             <ArrowRight className="w-4 h-4" />

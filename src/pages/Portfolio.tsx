@@ -88,7 +88,7 @@ export default function Portfolio() {
   const activeImage = lightboxIndex !== null ? filteredGalleries[lightboxIndex] : null;
 
   return (
-    <div className="bg-cream-50">
+    <div className="bg-[#121113]">
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -114,7 +114,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-[#121113]">
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-wrap justify-center gap-2 mb-16">
             {categories.map((category) => {
@@ -125,8 +125,8 @@ export default function Portfolio() {
                   onClick={() => setActiveCategory(category.value)}
                   className={`flex items-center gap-1.5 px-4 py-2 rounded-sm font-sans text-xs tracking-wide transition-all duration-300 ${
                     activeCategory === category.value
-                      ? 'bg-[#D4A574] text-white shadow-md'
-                      : 'bg-[#FAF9F6] text-[#2D2D2D] hover:bg-[#F4E6E1]'
+                      ? 'bg-[#D4A574] text-[#121113] shadow-md'
+                      : 'bg-[#1E1D1F] text-[#F5F0E8] hover:bg-[#2A2830]'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -141,7 +141,7 @@ export default function Portfolio() {
               <button
                 key={photo.id}
                 onClick={() => setLightboxIndex(index)}
-                className="group relative block w-full mb-6 break-inside-avoid overflow-hidden rounded-sm bg-sand-100 animate-fade-in text-left"
+                className="group relative block w-full mb-6 break-inside-avoid overflow-hidden rounded-sm bg-[#1E1D1F] animate-fade-in text-left"
                 style={{ animationDelay: `${(index % 9) * 0.08}s` }}
               >
                 <img
@@ -169,7 +169,7 @@ export default function Portfolio() {
 
           {filteredGalleries.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-[#6B7280] text-lg font-light">
+              <p className="text-[#B8AFA0] text-lg font-light">
                 No celebrations found in this category.
               </p>
             </div>

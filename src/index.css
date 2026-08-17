@@ -10,7 +10,9 @@
   }
 
   body {
-    @apply font-sans text-slate-800 antialiased;
+    @apply font-sans antialiased;
+    background-color: #121113;
+    color: #f5f0e8;
   }
 }
 

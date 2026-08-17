@@ -73,7 +73,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-cream-50">
+    <div className="bg-[#121113]">
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -100,10 +100,10 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
               <div className="sticky top-24">
-                <h2 className="font-elegant text-4xl text-slate-800 mb-6">
+                <h2 className="font-elegant text-4xl text-[#F5F0E8] mb-6">
                   Get In Touch
                 </h2>
-                <p className="text-slate-600 leading-relaxed mb-8">
+                <p className="text-[#B8AFA0] leading-relaxed mb-8">
                   Thank you for considering me to capture your wedding day. I
                   would be honored to learn more about your love story and how I
                   can help preserve your most precious moments.
@@ -111,16 +111,16 @@ export default function Contact() {
 
                 <div className="space-y-6">
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-rose-600" />
+                    <div className="w-12 h-12 bg-[#D4A574]/15 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-5 h-5 text-[#D4A574]" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 mb-1">
+                      <h3 className="font-semibold text-[#F5F0E8] mb-1">
                         Email
                       </h3>
                       <a
                         href="mailto:hello@lovelightvision.com"
-                        className="text-slate-600 hover:text-rose-600 transition-colors"
+                        className="text-[#B8AFA0] hover:text-[#D4A574] transition-colors"
                       >
                         hello@lovelightvision.com
                       </a>
@@ -128,16 +128,16 @@ export default function Contact() {
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-rose-600" />
+                    <div className="w-12 h-12 bg-[#D4A574]/15 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-[#D4A574]" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 mb-1">
+                      <h3 className="font-semibold text-[#F5F0E8] mb-1">
                         Phone
                       </h3>
                       <a
                         href="tel:+1234567890"
-                        className="text-slate-600 hover:text-rose-600 transition-colors"
+                        className="text-[#B8AFA0] hover:text-[#D4A574] transition-colors"
                       >
                         (123) 456-7890
                       </a>
@@ -145,14 +145,14 @@ export default function Contact() {
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-rose-600" />
+                    <div className="w-12 h-12 bg-[#D4A574]/15 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 text-[#D4A574]" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 mb-1">
+                      <h3 className="font-semibold text-[#F5F0E8] mb-1">
                         Location
                       </h3>
-                      <p className="text-slate-600">
+                      <p className="text-[#B8AFA0]">
                         Based in Jalgaon
                         <br />
                         Available for travel worldwide
@@ -161,32 +161,32 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="mt-8 p-6 bg-white rounded-sm shadow-sm">
-                  <h3 className="font-serif text-lg text-slate-800 mb-3">
+                <div className="mt-8 p-6 bg-[#1E1D1F] rounded-sm shadow-sm">
+                  <h3 className="font-serif text-lg text-[#F5F0E8] mb-3">
                     What to Expect
                   </h3>
-                  <ul className="space-y-2 text-slate-600 text-sm">
+                  <ul className="space-y-2 text-[#B8AFA0] text-sm">
                     <li className="flex gap-2">
-                      <span className="text-rose-600">•</span>
+                      <span className="text-[#D4A574]">•</span>
                       <span>Response within 24-48 hours</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-rose-600">•</span>
+                      <span className="text-[#D4A574]">•</span>
                       <span>Detailed pricing and package information</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-rose-600">•</span>
+                      <span className="text-[#D4A574]">•</span>
                       <span>Portfolio samples matching your style</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-rose-600">•</span>
+                      <span className="text-[#D4A574]">•</span>
                       <span>Option to schedule a consultation call</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="font-serif text-lg text-slate-800 mb-4">
+                  <h3 className="font-serif text-lg text-[#F5F0E8] mb-4">
                     Current Availability
                   </h3>
                   <AvailabilityCalendar />
@@ -197,13 +197,13 @@ export default function Contact() {
             <div className="lg:col-span-3">
               <form
                 onSubmit={handleSubmit}
-                className="bg-white p-8 md:p-10 rounded-sm shadow-lg"
+                className="bg-[#1E1D1F] p-8 md:p-10 rounded-sm shadow-lg"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label
                       htmlFor="brideName"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#D9D2C5] font-medium mb-2"
                     >
                       Bride's Name *
                     </label>
@@ -214,14 +214,14 @@ export default function Contact() {
                       value={formData.brideName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 bg-[#121113] text-[#F5F0E8] border border-[#3A362F] rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="groomName"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#D9D2C5] font-medium mb-2"
                     >
                       Groom's Name *
                     </label>
@@ -232,7 +232,7 @@ export default function Contact() {
                       value={formData.groomName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 bg-[#121113] text-[#F5F0E8] border border-[#3A362F] rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#D9D2C5] font-medium mb-2"
                     >
                       Email Address *
                     </label>
@@ -252,14 +252,14 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 bg-[#121113] text-[#F5F0E8] border border-[#3A362F] rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#D9D2C5] font-medium mb-2"
                     >
                       Phone Number
                     </label>
@@ -269,7 +269,7 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 bg-[#121113] text-[#F5F0E8] border border-[#3A362F] rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
                 </div>
@@ -278,7 +278,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="weddingDate"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#D9D2C5] font-medium mb-2"
                     >
                       Wedding Date *
                     </label>
@@ -289,14 +289,14 @@ export default function Contact() {
                       value={formData.weddingDate}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 bg-[#121113] text-[#F5F0E8] border border-[#3A362F] rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="venueLocation"
-                      className="block text-slate-700 font-medium mb-2"
+                      className="block text-[#D9D2C5] font-medium mb-2"
                     >
                       Venue Location *
                     </label>
@@ -308,7 +308,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       placeholder="City, State"
-                      className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors"
+                      className="w-full px-4 py-3 bg-[#121113] text-[#F5F0E8] border border-[#3A362F] rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors"
                     />
                   </div>
                 </div>
@@ -316,7 +316,7 @@ export default function Contact() {
                 <div className="mb-6">
                   <label
                     htmlFor="message"
-                    className="block text-slate-700 font-medium mb-2"
+                    className="block text-[#D9D2C5] font-medium mb-2"
                   >
                     Tell Me About Your Wedding *
                   </label>
@@ -328,15 +328,15 @@ export default function Contact() {
                     required
                     rows={6}
                     placeholder="Share your vision, style preferences, or any questions you have..."
-                    className="w-full px-4 py-3 border border-sand-300 rounded-sm focus:outline-none focus:border-rose-400 transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-[#121113] text-[#F5F0E8] border border-[#3A362F] rounded-sm focus:outline-none focus:border-[#D4A574] transition-colors resize-none"
                   />
                 </div>
 
                 {submitStatus.type && (
                   <div
                     className={`mb-6 p-4 rounded-sm ${submitStatus.type === 'success'
-                        ? 'bg-green-50 text-green-800 border border-green-200'
-                        : 'bg-red-50 text-red-800 border border-red-200'
+                        ? 'bg-green-500/10 text-green-400 border border-green-500/30'
+                        : 'bg-red-500/10 text-red-400 border border-red-500/30'
                       }`}
                   >
                     {submitStatus.message}
@@ -346,7 +346,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-slate-800 text-white py-4 rounded-sm hover:bg-slate-700 transition-all duration-300 font-sans text-sm tracking-wider uppercase flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#D4A574] text-[#121113] py-4 rounded-sm hover:bg-[#C09563] transition-all duration-300 font-sans text-sm tracking-wider uppercase flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     'Sending...'
@@ -363,13 +363,13 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-[#1E1D1F]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="font-elegant text-4xl md:text-5xl text-slate-800 mb-4">
+            <h2 className="font-elegant text-4xl md:text-5xl text-[#F5F0E8] mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            <p className="text-[#B8AFA0] text-lg max-w-2xl mx-auto">
               Common questions about the booking process and what to expect
             </p>
           </div>
