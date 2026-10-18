@@ -10,7 +10,7 @@ const faqs = [
   {
     question: 'Do you travel for weddings?',
     answer:
-      'Absolutely! I am based in California but available for weddings worldwide. Travel fees vary by location and are discussed during the consultation.',
+      'Absolutely! We are based in Jalgaon, Maharashtra but available for weddings worldwide. Travel fees vary by location and are discussed during the consultation.',
   },
   {
     question: 'How long until we receive our photos?',
@@ -20,7 +20,7 @@ const faqs = [
   {
     question: 'Can we customize a package?',
     answer:
-      'Yes! While I offer three core collections, I am happy to create a custom package tailored to your specific needs, timeline, and budget. Let us discuss what works best for your wedding.',
+      'Yes! We can create a custom photography package tailored to your specific needs, timeline, and budget. Let us discuss what works best for your wedding.',
   },
   {
     question: 'What is your photography style?',

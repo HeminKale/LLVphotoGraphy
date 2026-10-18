@@ -1,17 +1,18 @@
 import { useState, FormEvent } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { sendEnquiry } from '../lib/sendEnquiry';
+import { eventTypes } from '../data/studio';
+import EnquiryWhatsAppLink from '../components/EnquiryWhatsAppLink';
 import AvailabilityCalendar from '../components/AvailabilityCalendar';
 import FAQ from '../components/FAQ';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    brideName: '',
-    groomName: '',
+    name: '',
     email: '',
     phone: '',
-    weddingDate: '',
-    venueLocation: '',
+    eventName: 'Wedding',
+    eventDate: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,56 +21,58 @@ export default function Contact() {
     message: string;
   }>({ type: null, message: '' });
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: '' });
-
-    const { error } = await supabase.from('contact_inquiries').insert([
-      {
-        bride_name: formData.brideName,
-        groom_name: formData.groomName,
-        email: formData.email,
-        phone: formData.phone || null,
-        wedding_date: formData.weddingDate,
-        venue_location: formData.venueLocation,
-        message: formData.message,
-      },
-    ]);
-
-    setIsSubmitting(false);
-
-    if (error) {
-      setSubmitStatus({
-        type: 'error',
-        message:
-          'There was an error submitting your inquiry. Please try again or email us directly.',
-      });
-    } else {
-      setSubmitStatus({
-        type: 'success',
-        message:
-          "Thank you for your inquiry! I'll be in touch within 24-48 hours.",
-      });
-      setFormData({
-        brideName: '',
-        groomName: '',
-        email: '',
-        phone: '',
-        weddingDate: '',
-        venueLocation: '',
-        message: '',
-      });
-    }
-  };
-
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    const result = await sendEnquiry(
+      'Contact Form',
+      [
+        { label: 'Name', value: formData.name },
+        { label: 'Email', value: formData.email },
+        { label: 'Phone', value: formData.phone },
+        { label: 'Event', value: formData.eventName },
+        { label: 'Event Date', value: formData.eventDate },
+        { label: 'Message', value: formData.message },
+      ],
+      formData.email
+    );
+
+    setIsSubmitting(false);
+
+    if (result.ok) {
+      setSubmitStatus({
+        type: 'success',
+        message:
+          'Your enquiry has been accepted for email delivery. We will get back to you within 24-48 hours at the email or phone number you provided.',
+      });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        eventName: 'Wedding',
+        eventDate: '',
+        message: '',
+      });
+    } else {
+      setSubmitStatus({
+        type: 'error',
+        message:
+          result.error === 'Email delivery is not configured yet.'
+            ? 'Email delivery is not set up yet. Please email us directly at ulhaslp1995@gmail.com or use WhatsApp.'
+            : 'Email is currently unavailable. Please use Send via WhatsApp below, or email ulhaslp1995@gmail.com.',
+      });
+    }
   };
 
   return (
@@ -90,7 +93,7 @@ export default function Contact() {
             Let's Tell Your Love Story
           </h1>
           <p className="text-white/90 text-lg md:text-xl font-light">
-            I'd love to hear about your wedding day
+            Tell us about your wedding, family celebration, or portrait session
           </p>
         </div>
       </section>
@@ -104,8 +107,8 @@ export default function Contact() {
                   Get In Touch
                 </h2>
                 <p className="text-[#A9A0C4] leading-relaxed mb-8">
-                  Thank you for considering me to capture your wedding day. I
-                  would be honored to learn more about your love story and how I
+                  Thank you for considering us to capture your special day. We
+                  would be honored to learn more about your story and how we
                   can help preserve your most precious moments.
                 </p>
 
@@ -119,10 +122,10 @@ export default function Contact() {
                         Email
                       </h3>
                       <a
-                        href="mailto:hello@lovelightvision.com"
+                        href="mailto:ulhaslp1995@gmail.com"
                         className="text-[#A9A0C4] hover:text-[#8F1ED2] transition-colors"
                       >
-                        hello@lovelightvision.com
+                        ulhaslp1995@gmail.com
                       </a>
                     </div>
                   </div>
@@ -136,10 +139,10 @@ export default function Contact() {
                         Phone
                       </h3>
                       <a
-                        href="tel:+1234567890"
+                        href="tel:+918788925877"
                         className="text-[#A9A0C4] hover:text-[#8F1ED2] transition-colors"
                       >
-                        (123) 456-7890
+                        +91 87889 25877
                       </a>
                     </div>
                   </div>
@@ -153,7 +156,7 @@ export default function Contact() {
                         Location
                       </h3>
                       <p className="text-[#A9A0C4]">
-                        Based in Jalgaon
+                        Based in Jalgaon, Maharashtra
                         <br />
                         Available for travel worldwide
                       </p>
@@ -199,55 +202,35 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="bg-[#1C1330] p-8 md:p-10 rounded-sm shadow-lg"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label
-                      htmlFor="brideName"
-                      className="block text-[#D9D2E8] font-medium mb-2"
-                    >
-                      Bride's Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="brideName"
-                      name="brideName"
-                      value={formData.brideName}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-[#100B21] text-[#F1EDFB] border border-[#332950] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="groomName"
-                      className="block text-[#D9D2E8] font-medium mb-2"
-                    >
-                      Groom's Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="groomName"
-                      name="groomName"
-                      value={formData.groomName}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-[#100B21] text-[#F1EDFB] border border-[#332950] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
-                    />
-                  </div>
+                <div className="mb-6">
+                  <label
+                    htmlFor="contact-name"
+                    className="block text-[#D9D2E8] font-medium mb-2"
+                  >
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-[#100B21] text-[#F1EDFB] border border-[#332950] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
+                  />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label
-                      htmlFor="email"
+                      htmlFor="contact-email"
                       className="block text-[#D9D2E8] font-medium mb-2"
                     >
                       Email Address *
                     </label>
                     <input
                       type="email"
-                      id="email"
+                      id="contact-email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
@@ -258,17 +241,18 @@ export default function Contact() {
 
                   <div>
                     <label
-                      htmlFor="phone"
+                      htmlFor="contact-phone"
                       className="block text-[#D9D2E8] font-medium mb-2"
                     >
-                      Phone Number
+                      Phone Number *
                     </label>
                     <input
                       type="tel"
-                      id="phone"
+                      id="contact-phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 bg-[#100B21] text-[#F1EDFB] border border-[#332950] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
                     />
                   </div>
@@ -277,37 +261,41 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label
-                      htmlFor="weddingDate"
+                      htmlFor="contact-event"
                       className="block text-[#D9D2E8] font-medium mb-2"
                     >
-                      Wedding Date *
+                      Event Name *
                     </label>
-                    <input
-                      type="date"
-                      id="weddingDate"
-                      name="weddingDate"
-                      value={formData.weddingDate}
+                    <select
+                      id="contact-event"
+                      name="eventName"
+                      value={formData.eventName}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-[#100B21] text-[#F1EDFB] border border-[#332950] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
-                    />
+                    >
+                      {eventTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div>
                     <label
-                      htmlFor="venueLocation"
+                      htmlFor="contact-date"
                       className="block text-[#D9D2E8] font-medium mb-2"
                     >
-                      Venue Location *
+                      Event Date *
                     </label>
                     <input
-                      type="text"
-                      id="venueLocation"
-                      name="venueLocation"
-                      value={formData.venueLocation}
+                      type="date"
+                      id="contact-date"
+                      name="eventDate"
+                      value={formData.eventDate}
                       onChange={handleChange}
                       required
-                      placeholder="City, State"
                       className="w-full px-4 py-3 bg-[#100B21] text-[#F1EDFB] border border-[#332950] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
                     />
                   </div>
@@ -315,25 +303,26 @@ export default function Contact() {
 
                 <div className="mb-6">
                   <label
-                    htmlFor="message"
+                    htmlFor="contact-message"
                     className="block text-[#D9D2E8] font-medium mb-2"
                   >
-                    Tell Me About Your Wedding *
+                    Message *
                   </label>
                   <textarea
-                    id="message"
+                    id="contact-message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    maxLength={2000}
                     rows={6}
-                    placeholder="Share your vision, style preferences, or any questions you have..."
+                    placeholder="Share your venue, style preferences, or any questions..."
                     className="w-full px-4 py-3 bg-[#100B21] text-[#F1EDFB] border border-[#332950] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors resize-none"
                   />
                 </div>
 
                 {submitStatus.type && (
-                  <div
+                  <div role="status" aria-live="polite"
                     className={`mb-6 p-4 rounded-sm ${submitStatus.type === 'success'
                         ? 'bg-green-500/10 text-green-400 border border-green-500/30'
                         : 'bg-red-500/10 text-red-400 border border-red-500/30'
@@ -352,11 +341,18 @@ export default function Contact() {
                     'Sending...'
                   ) : (
                     <>
-                      Send Inquiry
+                      Send Email Enquiry
                       <Send className="w-4 h-4" />
                     </>
                   )}
                 </button>
+
+                <div className="mt-4"><EnquiryWhatsAppLink details={formData} /></div>
+
+                <p className="text-[#77778A] text-xs mt-4 flex items-start gap-1.5">
+                  <Send className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
+                  Send an email enquiry, or choose WhatsApp to chat with the studio.
+                </p>
               </form>
             </div>
           </div>

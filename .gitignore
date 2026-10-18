@@ -24,3 +24,9 @@ dist-ssr
 
 # Original full-resolution photo files (kept locally, never committed)
 /raw-photos-originals/
+
+# Local comparison checkouts and dependency cache
+/.branch-check-option-4/
+/.repo-compare-LLVFinal/
+/.npm-cache/
+/supabase/.temp/

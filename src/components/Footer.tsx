@@ -1,4 +1,4 @@
-import { Camera, Instagram, Facebook, Mail } from 'lucide-react';
+import { Camera, Instagram, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -33,10 +33,10 @@ export default function Footer() {
                 About
               </Link>
               <Link
-                to="/packages"
+                to="/testimonials"
                 className="text-sand-300 text-sm hover:text-white transition-colors"
               >
-                Packages
+                Testimonials
               </Link>
               <Link
                 to="/contact"
@@ -51,25 +51,39 @@ export default function Footer() {
             <h3 className="font-serif text-lg mb-4">Connect</h3>
             <div className="flex gap-4 mb-4">
               <a
-                href="#"
+                href="https://www.instagram.com/lovelight_vision_up"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
+
               <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:hello@lovelightvision.com"
+                href="mailto:ulhaslp1995@gmail.com"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Mail className="w-5 h-5" />
               </a>
             </div>
-            <p className="text-sand-300 text-sm">hello@lovelightvision.com</p>
+            <div className="flex items-center gap-2 mb-4">
+              <a
+                href="mailto:ulhaslp1995@gmail.com"
+                className="text-sand-300 text-sm hover:text-white transition-colors"
+              >
+                ulhaslp1995@gmail.com
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4 text-sand-300" />
+              <a
+                href="tel:+918788925877"
+                className="text-sand-300 text-sm hover:text-white transition-colors"
+              >
+                +91 87889 25877
+              </a>
+            </div>
           </div>
         </div>
 

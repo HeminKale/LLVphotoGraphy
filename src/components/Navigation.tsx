@@ -24,7 +24,6 @@ export default function Navigation() {
   ];
 
   const rightLinks = [
-    { name: 'Packages', path: '/packages' },
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Contact', path: '/contact' },
   ];

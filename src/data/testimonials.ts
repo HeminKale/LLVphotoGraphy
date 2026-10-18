@@ -9,26 +9,34 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     id: '1',
-    couple_names: 'Emma & James',
+    couple_names: 'Jitendra Nemade',
     quote:
-      "Our wedding photos are beyond anything we could have imagined. Every emotion, every laugh, every tear was captured so beautifully. We'll treasure these images forever.",
-    wedding_date: '2024-06-15',
+      'We hired Lovelight vision studio for our recent event and were absolutely thrilled with the results! The photographer and team captured every special moment beautifully. The quality of the photos is outstanding, and they were delivered on time as promised. Their professionalism, creativity, and friendly nature made the whole experience smooth and enjoyable. Highly recommended for any event!',
+    wedding_date: '2025-07-02',
     featured: true,
   },
   {
     id: '2',
-    couple_names: 'Sophia & Michael',
+    couple_names: 'Shekhar Chaudhari',
     quote:
-      'From the moment we met, we knew our photographer understood our vision. The photos feel like art, but they also feel like us — authentic and full of joy.',
-    wedding_date: '2024-08-22',
+      'First time at Lovelight Vision Studio! Super impressed! Candid shots were fantastic and the retouching is flawless. Great experience, definitely recommend for a professional, yet fun, photoshoot.',
+    wedding_date: '2025-09-18',
     featured: true,
   },
   {
     id: '3',
-    couple_names: 'Olivia & Daniel',
+    couple_names: 'Sonal More',
     quote:
-      'We were nervous about being in front of the camera, but the whole day felt relaxed and natural. The results speak for themselves — timeless, gorgeous photos.',
-    wedding_date: '2024-09-10',
+      'A BIG heartfelt thanks to you for all these amazing captures in time! These will be cherished forever. Thank you sooo much for all your hard work, they are absolutely wonderful. The photos and teaser are absolutely amazing and so much more than I could have imagined. Thank you sooo much LOVE LIGHT VISION',
+    wedding_date: '2025-10-18',
+    featured: true,
+  },
+  {
+    id: '4',
+    couple_names: 'Gunvant',
+    quote:
+      'Stepped into Lovelight Vision Studio feeling a bit nervous for my maternity and portfolio shoots. The atmosphere was so welcoming, instantly putting me at ease. The photographer was brilliant, capturing stunning, intimate moments I\u2019ll cherish forever, and produced portfolio shots that truly shine. Highly recommend for any visitor wanting professional, heartfelt photos.',
+    wedding_date: '2026-10-03',
     featured: true,
   },
 ];

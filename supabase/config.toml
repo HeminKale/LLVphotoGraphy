@@ -1,0 +1,3 @@
+[functions.send-enquiry]
+# Public enquiry endpoint: validates the request and uses server-only mail secrets.
+verify_jwt = false

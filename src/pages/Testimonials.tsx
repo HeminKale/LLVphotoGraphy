@@ -44,7 +44,7 @@ export default function Testimonials() {
               <Star className="w-8 h-8 text-[#8F1ED2] group-hover:text-white transition-colors duration-300" />
             </div>
             <div className="font-elegant text-5xl md:text-6xl text-[#F1EDFB] mb-2">
-              4.9
+              5.0
             </div>
             <p className="text-[#A9A0C4] text-sm md:text-base font-medium">
               Average Rating
