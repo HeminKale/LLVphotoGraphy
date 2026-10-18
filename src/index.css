@@ -44,9 +44,11 @@
     --booking-control-height: 44px;
     --booking-message-height: 96px;
     max-width: 30rem;
-    height: 100%;
-    height: 100dvh;
-    max-height: 100dvh;
+    height: auto;
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    border-radius: 18px 0 0 18px;
+    overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
     color: #1f2937;

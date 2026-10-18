@@ -141,7 +141,7 @@ export default function BookingFlap() {
         />
 
         <aside ref={dialogRef} role="dialog" aria-modal="true" aria-label="Book your slot"
-          className={`booking-drawer absolute right-0 top-0 w-full bg-white shadow-2xl transition-transform duration-500 ease-out ${
+          className={`booking-drawer absolute right-0 top-1/2 -translate-y-1/2 w-full bg-white shadow-2xl transition-transform duration-500 ease-out ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
