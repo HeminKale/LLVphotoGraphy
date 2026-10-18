@@ -5,6 +5,7 @@ import { eventTypes } from '../data/studio';
 import { enquiryMessages } from '../data/enquiryMessages';
 import EnquiryWhatsAppLink from '../components/EnquiryWhatsAppLink';
 import FAQ from '../components/FAQ';
+import StudioLocation from '../components/StudioLocation';
 
 export default function Contact() {
   const lastChannelRef = useRef<'email' | 'whatsapp' | null>(null);
@@ -355,6 +356,8 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      <StudioLocation />
 
       <section className="py-20 px-6 bg-[#1C1330]">
         <div className="container mx-auto px-6">

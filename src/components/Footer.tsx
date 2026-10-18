@@ -1,5 +1,6 @@
-import { Camera, Instagram, Mail, Phone } from 'lucide-react';
+import { Camera, Instagram, Youtube, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { studio } from '../data/studio';
 
 export default function Footer() {
   return (
@@ -51,7 +52,7 @@ export default function Footer() {
             <h3 className="font-serif text-lg mb-4">Connect</h3>
             <div className="flex gap-4 mb-4">
               <a
-                href="https://www.instagram.com/lovelight_vision_up"
+                href={studio.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Instagram"
@@ -60,6 +61,15 @@ export default function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
 
+              <a
+                href={studio.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Watch Love Light Vision on YouTube"
+                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
               <a
                 href="mailto:ulhaslp1995@gmail.com"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"

@@ -1,4 +1,4 @@
-import { MessageCircle, Instagram } from 'lucide-react';
+import { MessageCircle, Instagram, Youtube } from 'lucide-react';
 import { studio } from '../data/studio';
 
 const WHATSAPP_NUMBER = studio.whatsappNumber;
@@ -8,6 +8,15 @@ const INSTAGRAM_URL = studio.instagram;
 export default function FloatingContacts() {
   return (
     <div className="fixed bottom-6 right-4 md:right-6 z-[85] flex flex-col gap-3">
+      <a
+        href={studio.youtube}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Watch Love Light Vision on YouTube"
+        className="w-12 h-12 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
+      >
+        <Youtube className="w-5 h-5" />
+      </a>
       <a
         href={INSTAGRAM_URL}
         target="_blank"
