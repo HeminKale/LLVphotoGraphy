@@ -1,7 +1,7 @@
 import { useRef, useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, Instagram, Youtube, Send } from 'lucide-react';
 import { sendEnquiry } from '../lib/sendEnquiry';
-import { eventTypes } from '../data/studio';
+import { eventTypes, studio } from '../data/studio';
 import { enquiryMessages } from '../data/enquiryMessages';
 import EnquiryWhatsAppLink from '../components/EnquiryWhatsAppLink';
 import FAQ from '../components/FAQ';
@@ -151,19 +151,19 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 bg-[#8F1ED2]/15 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-[#8F1ED2]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-[#F1EDFB] mb-1">
-                        Location
-                      </h3>
-                      <p className="text-[#A9A0C4]">
-                        Based in Jalgaon, Maharashtra
-                        <br />
-                        Available for travel worldwide
-                      </p>
+                  <div className="pl-16">
+                    <h3 className="font-semibold text-[#F1EDFB] mb-3">Social</h3>
+                    <div className="flex gap-3">
+                      <a href={studio.instagram} target="_blank" rel="noopener noreferrer"
+                        aria-label="Follow Love Light Vision on Instagram" title="Instagram"
+                        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8F1ED2]/15 text-[#C98BEA] hover:bg-[#8F1ED2] hover:text-white transition-colors">
+                        <Instagram className="h-5 w-5" aria-hidden="true" />
+                      </a>
+                      <a href={studio.youtube} target="_blank" rel="noopener noreferrer"
+                        aria-label="Watch Love Light Vision on YouTube" title="YouTube"
+                        className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600/15 text-red-400 hover:bg-red-600 hover:text-white transition-colors">
+                        <Youtube className="h-5 w-5" aria-hidden="true" />
+                      </a>
                     </div>
                   </div>
                 </div>

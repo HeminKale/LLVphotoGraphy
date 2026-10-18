@@ -56,6 +56,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Instagram"
+                title="Instagram"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Instagram className="w-5 h-5" />
@@ -66,7 +67,8 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Watch Love Light Vision on YouTube"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
+                title="YouTube"
+                className="w-10 h-10 bg-red-600/15 text-red-400 rounded-full flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors"
               >
                 <Youtube className="w-5 h-5" />
               </a>
