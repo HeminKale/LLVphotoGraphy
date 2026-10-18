@@ -1,0 +1,23 @@
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Never expose private settings if accidentally uploaded to the web root.
+  RewriteRule (^|/)(\.|enquiry-config\.php$|package(?:-lock)?\.json$|.*\.example$) - [F,L,NC]
+
+  # Keep the public URLs without trailing slashes, serving generated page metadata.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} ^/(about|portfolio|contact|testimonials)/$
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+  RewriteRule ^(about|portfolio|contact|testimonials)$ $1/index.html [L]
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Missing API routes must not return the React HTML shell.
+  RewriteRule ^api/ - [R=404,L]
+  RewriteRule ^ index.html [L]
+</IfModule>

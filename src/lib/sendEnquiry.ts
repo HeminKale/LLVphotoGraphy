@@ -8,15 +8,11 @@ export async function sendEnquiry(
   fields: EnquiryField[],
   replyTo?: string
 ): Promise<{ ok: boolean; error?: string }> {
-  const projectUrl = import.meta.env.VITE_SUPABASE_URL?.trim();
-  const publicKey = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim();
-  if (!projectUrl || !publicKey) {
-    return { ok: false, error: 'Email delivery is not configured yet.' };
-  }
+  const endpoint = import.meta.env.VITE_ENQUIRY_ENDPOINT?.trim() || '/api/send-enquiry.php';
   try {
-    const response = await fetch(`${projectUrl.replace(/\/$/, '')}/functions/v1/send-enquiry`, {
+    const response = await fetch(endpoint, {
       method: 'POST',
-      headers: { apikey: publicKey, 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ formType, fields, replyTo }),
       signal: AbortSignal.timeout(15000),
     });

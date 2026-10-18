@@ -1,5 +1,6 @@
 import { Camera, Heart, Sparkles, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ulhasPortrait from '../assets/about/ulhas-portrait.jpg';
 
 export default function About() {
   return (
@@ -65,8 +66,12 @@ export default function About() {
               <div className="relative">
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
-                    src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Ulhas - Wedding Photographer"
+                    src={ulhasPortrait}
+                    alt="Ulhas, photographer at Love Light Vision in Jalgaon"
+                    width={4160}
+                    height={6240}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>

@@ -1,66 +1,64 @@
-# Owner enquiry delivery
+# Enquiry delivery on Hostinger
 
-Confirmed destination: **ulhaslp1995@gmail.com**. WhatsApp Business: **+91 87889 25877**.
-Website: **https://lovelightvision.com**.
+This website no longer requires Supabase. The gallery, testimonials and page content are local assets/data. Email enquiries use PHP on Hostinger and Resend. No database is required.
 
-## What works in the code
+Confirmed owner details:
+- Email: **ulhaslp1995@gmail.com**
+- WhatsApp Business: **+91 87889 25877**
+- Website: **https://lovelightvision.com**
 
-- Contact and the site-wide Book Slot drawer collect name, email, phone, event, date and message.
-- Send Email Enquiry calls the public Supabase `send-enquiry` function, which validates the input and calls Resend with server-only secrets.
-- The recipient is selected by the server secret, never by the visitor. Reply goes to the visitor's validated email.
-- Success means Resend accepted the email, not that it has reached the inbox. Check Resend's Delivered event to verify delivery.
-- Neither form stores enquiries in a database. No database migration is required for email delivery. Existing tables are preserved.
-- Send via WhatsApp opens a prefilled chat to the owner with the details currently in the form. The visitor taps Send in WhatsApp. This works independently of Supabase and Resend.
+## How it works
 
-## What is pending
+Both Contact and Book Slot send JSON to `/api/send-enquiry.php` on the same website. PHP validates the form, keeps the recipient fixed to the server configuration, and sends the message through Resend. Reply-To uses the visitor's validated email. Both an HTML and plain text version are included.
 
-1. The configured host `heidihkgqyytnjfklafx.supabase.co` did not resolve during the check on 18 October 2026, including outside the sandbox. Check the project in Supabase Dashboard: confirm it still exists and is active, and copy its current Project URL and anon/publishable key. The CLI is authenticated, but this project is not in the signed-in account's accessible project list, and this folder is not linked to a Supabase project. It may belong to another account/organization. Use the correct account or create a dedicated photography project; do not reuse the unrelated apps listed in the current account. A DNS failure alone does not establish whether it was paused, deleted or misconfigured.
-2. Update `.env.local` using `.env.example`, then restart `npm run dev`. Use the same public variables on your website host before rebuilding/deploying.
-3. Create/configure Resend and deploy the function below. Server secrets and deployed function status could not be inspected because the configured project is not accessible in the current authenticated account.
-4. Send a deliberate test after setup, check the Resend delivery event and the owner's inbox/spam folder. No real emails or WhatsApp messages were sent during development.
+The site reports success only when Resend accepts the request with an email ID. Actual delivery is a separate event: check Resend > Emails and the owner's inbox/spam folder. There is no database storage and submitting an enquiry does not reserve a date.
 
-## After creating your Resend account
+The endpoint limits each client address to five validated submissions per ten minutes using files outside the public website folder. No private credentials or enquiry messages are stored in those files. Rate-limited visitors can still use WhatsApp.
 
-1. In Resend > Domains, add your domain or a sending subdomain such as `mail.lovelightvision.com`. Add exactly the DNS records Resend supplies (SPF/DKIM) at your domain's DNS provider and wait for Verified. Keep existing mailbox DNS records intact.
-2. In Resend > API Keys, create a Sending access key, scoped to your verified domain when possible.
-3. In Supabase > Edge Functions > Secrets, set:
+## After creating Resend
 
-   ```text
-   RESEND_API_KEY=your Resend sending key
-   ENQUIRY_TO_EMAIL=ulhaslp1995@gmail.com
-   ENQUIRY_FROM_EMAIL=Love Light Vision <enquiries@mail.lovelightvision.com>
+1. In Resend > Domains, add `lovelightvision.com`, add the exact SPF/DKIM DNS records supplied by Resend, and wait for Verified. Keep existing mailbox DNS records intact. You can instead verify a sending subdomain; your FROM address must use whichever domain/subdomain you actually verified.
+2. Create a Sending access API key, scoped to the verified sending domain when possible.
+3. Copy `hostinger/enquiry-config.example.php` to the private Hostinger directory **beside `public_html`**, rename it `enquiry-config.php`, and fill it:
+
+   ```php
+   <?php
+   return [
+       'resend_api_key' => 'YOUR_RESEND_KEY',
+       'from_email' => 'Love Light Vision <enquiries@lovelightvision.com>',
+       'to_email' => 'ulhaslp1995@gmail.com',
+   ];
    ```
 
-   The FROM address must use the exact domain/subdomain you verified. If you verified the root domain, use `enquiries@lovelightvision.com` instead. Do not put the Resend key in a `VITE_` variable or commit it.
-4. Deploy from PowerShell in this project:
+4. Deploy the website following [HOSTINGER_DEPLOYMENT.md](HOSTINGER_DEPLOYMENT.md).
+5. Submit a deliberate test enquiry and confirm the Resend Delivered event and receipt in the owner's inbox. No real emails or WhatsApp messages were sent during development.
 
-   ```powershell
-   supabase login
-   supabase functions deploy send-enquiry --project-ref YOUR_ACTIVE_PROJECT_REF
-   ```
+Never place the real configuration inside `public_html`, `public`, `dist`, a `VITE_` variable, GitHub, or chat. The repository ignores the local `enquiry-config.php` file. The public `.env.example` contains only an optional endpoint URL, not private credentials.
 
-   `supabase/config.toml` disables JWT verification for this intentionally public enquiry endpoint. It validates input and has a fixed server-side recipient. The browser sends the project's public key, which is not a private authentication credential. Do not use a service-role key in the browser.
-5. Submit a test enquiry, check Edge Function logs and Resend > Emails, then confirm receipt in the owner's inbox. Resend acceptance and final delivery are separate states.
+Without a verified domain, Resend's `onboarding@resend.dev` sender can only deliver to the email associated with the Resend account. To test to the owner's Gmail this way, that Gmail must be the account email. Production should use the verified sending domain. Gmail can be a recipient but cannot be your verified sending domain.
 
-Optional CLI alternative for secrets: copy `supabase/functions/.env.example` to `supabase/functions/.env.local`, fill it locally, then run `supabase secrets set --env-file supabase/functions/.env.local --project-ref YOUR_ACTIVE_PROJECT_REF`. The `.local` file is ignored by Git. Never paste private keys into chat.
+## WhatsApp
 
-For initial testing without a verified domain, Resend's `onboarding@resend.dev` sender can only send to the email associated with your Resend account. To test directly to the owner's Gmail this way, the Resend account email must be the owner's email. Verify a sending domain to deliver to other recipients. A Gmail address can receive the mail but cannot be your verified sending domain.
+Both forms also offer Send via WhatsApp. This opens the owner's chat with the currently entered details. The visitor taps Send inside WhatsApp; no Resend, Supabase, or API account is required. Automatic notifications after an email submission would require a separate WhatsApp Business Platform/Cloud API integration, which is not enabled here.
 
-## WhatsApp Business
+## Local development
 
-The current implementation uses WhatsApp's click-to-chat feature. The owner receives the message on the WhatsApp account registered to the confirmed number after the visitor sends it; no API account or Resend setup is required. On a desktop, the visitor can use WhatsApp Web or the desktop app.
+The frontend uses Vite. PHP handles the API in a separate terminal:
 
-Automatically sending a notification when the email form is submitted is a different integration. It requires WhatsApp Business Platform/Cloud API onboarding (or an official provider), an API sender, server credentials, and an appropriate approved message template/recipient setup. Having the WhatsApp Business mobile app alone does not configure this API. That automation is not enabled in this code.
+```powershell
+npm ci
+npm run dev:api
+```
 
-## SEO changes
+In a second terminal:
 
-- Targets Jalgaon photography searches for wedding, pre-wedding, engagement, mehndi/mehndhi, maternity, baby/newborn, family, portrait, modeling, candid, traditional and couple photography.
-- Includes requested `Best photographer in Jalgon` spelling variant in metadata, with the correct Jalgaon spelling used in visible copy.
-- Browser tab titles show only Love Light Vision. SEO descriptions, canonical URLs, social metadata, LocalBusiness data, robots.txt and sitemap.xml remain. The additional local service section was removed from the visible homepage at the user's request; no hidden keyword text is inserted.
-- The postbuild script generates initial metadata HTML for each route so social crawlers can read it without running JavaScript. Page content still renders with React; this is not full page prerendering.
-- Google does not use the meta-keywords tag for rankings. Local content, accurate business information and crawlable pages matter more. After deploying, verify the domain in Google Search Console and submit `https://lovelightvision.com/sitemap.xml`. Ranking is not guaranteed.
+```powershell
+npm run dev
+```
 
-## Verification commands
+Open http://127.0.0.1:5173. Vite proxies `/api` to PHP at http://127.0.0.1:8080. PHP 8.2+ with cURL is required to run email locally; the provided setup can also use an ignored `.tools/php/php.exe` runtime on Windows or a `PHP_BINARY` environment variable. With no private configuration, a form returns a clear not-configured error and WhatsApp remains available. Do not expose the project root as a PHP document root; the API command serves only `public`.
+
+## Validation
 
 ```powershell
 npm run typecheck
@@ -69,12 +67,12 @@ npm test
 npm run build
 ```
 
+The tests run the actual PHP handler with a simulated mail provider, plus render the WhatsApp component and verify the target number and encoded enquiry details. The PHP tests check validation, fixed recipient, HTML escaping, provider failures and rate limiting. They do not send real mail.
+
+Historical Supabase database migrations remain for reference only and are not part of deployment. The old client library, Edge Function runtime and browser settings have been retired.
+
 References:
+- https://resend.com/docs/send-with-php
 - https://resend.com/docs/dashboard/domains/introduction
-- https://resend.com/docs/dashboard/api-keys/introduction
 - https://resend.com/docs/knowledge-base/403-error-resend-dev-domain
-- https://supabase.com/docs/guides/functions/deploy
-- https://supabase.com/docs/guides/functions/secrets
 - https://faq.whatsapp.com/5913398998672934
-- https://whatsappbusiness.com/products/business-platform/
-- https://developers.google.com/search/docs/fundamentals/seo-starter-guide

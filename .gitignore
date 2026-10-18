@@ -30,3 +30,9 @@ dist-ssr
 /.repo-compare-LLVFinal/
 /.npm-cache/
 /supabase/.temp/
+
+# Server-only mail configuration and portable local runtimes
+/enquiry-config.php
+/.tools/
+/.enquiry-rate-limit/
+/hostinger-site.zip
