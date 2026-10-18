@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "llvs-photography",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,9 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "test:enquiry": "node --test tests/enquiry.test.mjs",
     "postbuild": "node scripts/generate-route-html.mjs",
-    "test": "node --test tests/*.test.mjs",
     "dev:api": "node scripts/dev-api.mjs"
   },
   "dependencies": {
