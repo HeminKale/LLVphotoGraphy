@@ -152,7 +152,6 @@ export default function Contact() {
                   </div>
 
                   <div className="pl-16">
-                    <h3 className="font-semibold text-[#F1EDFB] mb-3">Social</h3>
                     <div className="flex gap-3">
                       <a href={studio.instagram} target="_blank" rel="noopener noreferrer"
                         aria-label="Follow Love Light Vision on Instagram" title="Instagram"
