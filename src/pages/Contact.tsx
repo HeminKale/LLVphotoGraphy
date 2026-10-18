@@ -3,7 +3,6 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { sendEnquiry } from '../lib/sendEnquiry';
 import { eventTypes } from '../data/studio';
 import EnquiryWhatsAppLink from '../components/EnquiryWhatsAppLink';
-import AvailabilityCalendar from '../components/AvailabilityCalendar';
 import FAQ from '../components/FAQ';
 
 export default function Contact() {
@@ -188,12 +187,6 @@ export default function Contact() {
                   </ul>
                 </div>
 
-                <div className="mt-8">
-                  <h3 className="font-serif text-lg text-[#F1EDFB] mb-4">
-                    Current Availability
-                  </h3>
-                  <AvailabilityCalendar />
-                </div>
               </div>
             </div>
 

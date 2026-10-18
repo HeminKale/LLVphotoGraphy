@@ -4,6 +4,8 @@ import { sendEnquiry } from '../lib/sendEnquiry';
 import { eventTypes } from '../data/studio';
 import EnquiryWhatsAppLink from './EnquiryWhatsAppLink';
 
+const bookingFieldClassName = 'w-full px-4 py-3 bg-white text-[#1F2937] placeholder:text-[#6B7280] caret-[#1F2937] [color-scheme:light] border border-[#E5E3ED] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors';
+
 export default function BookingFlap() {
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLElement>(null);
@@ -161,7 +163,7 @@ export default function BookingFlap() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-[#E5E3ED] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
+                className={bookingFieldClassName}
               />
             </div>
 
@@ -176,7 +178,7 @@ export default function BookingFlap() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-[#E5E3ED] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
+                className={bookingFieldClassName}
               />
             </div>
 
@@ -191,7 +193,7 @@ export default function BookingFlap() {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-[#E5E3ED] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
+                className={bookingFieldClassName}
               />
             </div>
 
@@ -205,7 +207,7 @@ export default function BookingFlap() {
                 value={formData.eventName}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-[#E5E3ED] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors bg-white"
+                className={bookingFieldClassName}
               >
                 {eventTypes.map((type) => (
                   <option key={type} value={type}>
@@ -226,7 +228,7 @@ export default function BookingFlap() {
                 value={formData.eventDate}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-[#E5E3ED] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors"
+                className={bookingFieldClassName}
               />
             </div>
 
@@ -243,7 +245,7 @@ export default function BookingFlap() {
                 maxLength={2000}
                 rows={4}
                 placeholder="Share your venue, style preferences, or any questions..."
-                className="w-full px-4 py-3 border border-[#E5E3ED] rounded-sm focus:outline-none focus:border-[#8F1ED2] transition-colors resize-none"
+                className={`${bookingFieldClassName} resize-none`}
               />
             </div>
 
