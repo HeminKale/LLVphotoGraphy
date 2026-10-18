@@ -36,3 +36,70 @@
     background-size: cover;
   }
 }
+
+@layer components {
+  .booking-drawer {
+    --booking-gap: 14px;
+    --booking-padding: 24px;
+    --booking-control-height: 44px;
+    --booking-message-height: 96px;
+    max-width: 30rem;
+    height: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    color: #1f2937;
+    color-scheme: light;
+  }
+
+  .booking-drawer-header { padding: 20px var(--booking-padding); }
+  .booking-close { width: 40px; height: 40px; }
+  .booking-form { display: flex; flex-direction: column; gap: var(--booking-gap); padding: var(--booking-padding); }
+  .booking-fields-row, .booking-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .booking-fields-row > div { min-width: 0; }
+  .booking-label { display: block; margin-bottom: 5px; color: #414154; font-size: 12px; font-weight: 500; line-height: 18px; }
+  .booking-field {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: var(--booking-control-height);
+    padding: 0 12px;
+    border: 1px solid #dedbe8;
+    border-radius: 6px;
+    background: #fff;
+    color: #1f2937;
+    caret-color: #1f2937;
+    font-size: 16px;
+    line-height: 1.35;
+    color-scheme: light;
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  .booking-field::placeholder { color: #6b7280; opacity: 1; }
+  .booking-field:focus { outline: none; border-color: #8f1ed2; box-shadow: 0 0 0 2px rgb(143 30 210 / 10%); }
+  .booking-message { height: var(--booking-message-height); padding-top: 10px; padding-bottom: 10px; resize: none; }
+  .booking-status { padding: 8px 10px; line-height: 20px; }
+  .booking-actions > button, .booking-actions a { min-height: var(--booking-control-height); padding: 0 8px; border-radius: 6px; font-size: 14px; line-height: 20px; }
+
+  @media (max-height: 700px) {
+    .booking-drawer { --booking-gap: 10px; --booking-padding: 20px; --booking-control-height: 40px; --booking-message-height: 80px; }
+    .booking-drawer-header { padding-top: 14px; padding-bottom: 14px; }
+  }
+
+  @media (max-height: 560px) {
+    .booking-drawer { --booking-gap: 8px; --booking-padding: 12px; --booking-control-height: 36px; --booking-message-height: 60px; }
+    .booking-drawer-header { padding-top: 10px; padding-bottom: 10px; }
+    .booking-drawer-header h2 { font-size: 26px; }
+    .booking-drawer-subtitle { display: none; }
+    .booking-close { width: 32px; height: 32px; }
+    .booking-label { line-height: 16px; margin-bottom: 4px; }
+  }
+
+  @media (max-height: 420px) {
+    .booking-drawer { --booking-gap: 6px; --booking-padding: 10px; --booking-message-height: 48px; }
+    .booking-drawer-header { padding-top: 8px; padding-bottom: 8px; }
+    .booking-label { line-height: 14px; margin-bottom: 3px; }
+  }
+
+}
