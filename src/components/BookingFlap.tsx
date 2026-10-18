@@ -274,12 +274,8 @@ export default function BookingFlap() {
               )}
             </button>
 
-            <div className="mt-4"><EnquiryWhatsAppLink details={formData} /></div>
+            <div className="mt-4"><EnquiryWhatsAppLink details={formData} showHint={false} /></div>
 
-            <p className="text-[#77778A] text-xs flex items-start gap-1.5">
-              <Send className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-              Send an email enquiry, or choose WhatsApp to chat with the studio.
-            </p>
           </form>
         </aside>
       </div>

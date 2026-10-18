@@ -10,7 +10,7 @@ interface EnquiryDetails {
   message: string;
 }
 
-export default function EnquiryWhatsAppLink({ details }: { details: EnquiryDetails }) {
+export default function EnquiryWhatsAppLink({ details, showHint = true }: { details: EnquiryDetails; showHint?: boolean }) {
   const message = [
     `Hi ${studio.name}, I'd like to enquire about a shoot.`,
     ...Object.entries({
@@ -30,9 +30,11 @@ export default function EnquiryWhatsAppLink({ details }: { details: EnquiryDetai
         <MessageCircle className="w-4 h-4" />
         Send via WhatsApp
       </a>
-      <p className="text-xs text-[#8B82A8]">
-        Opens the studio's WhatsApp chat with your details. Tap Send there to send your enquiry.
-      </p>
+      {showHint && (
+        <p className="text-xs text-[#8B82A8]">
+          Opens the studio's WhatsApp chat with your details. Tap Send there to send your enquiry.
+        </p>
+      )}
     </div>
   );
 }
