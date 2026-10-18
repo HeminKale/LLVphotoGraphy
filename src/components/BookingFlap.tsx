@@ -1,13 +1,20 @@
 import { useEffect, useRef, useState, FormEvent } from 'react';
-import { X, Send } from 'lucide-react';
+import { X, Send, Heart } from 'lucide-react';
 import { sendEnquiry } from '../lib/sendEnquiry';
 import { eventTypes } from '../data/studio';
+import { enquiryMessages } from '../data/enquiryMessages';
 import EnquiryWhatsAppLink from './EnquiryWhatsAppLink';
 
 const bookingFieldClassName = 'booking-field';
 
 export default function BookingFlap() {
   const [isOpen, setIsOpen] = useState(false);
+  const [confirmationChannel, setConfirmationChannel] = useState<'email' | 'whatsapp' | null>(null);
+  const lastChannelRef = useRef<'email' | 'whatsapp' | null>(null);
+  const confirmationHeadingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (confirmationChannel) confirmationHeadingRef.current?.focus();
+  }, [confirmationChannel]);
   const dialogRef = useRef<HTMLElement>(null);
   useEffect(() => {
     if (!isOpen) return;
@@ -63,6 +70,7 @@ export default function BookingFlap() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    lastChannelRef.current = 'email';
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
@@ -80,12 +88,14 @@ export default function BookingFlap() {
     );
 
     setIsSubmitting(false);
+    if (lastChannelRef.current !== 'email') return;
 
     if (result.ok) {
+      setConfirmationChannel('email');
       setSubmitStatus({
         type: 'success',
         message:
-          'Enquiry sent. We will reply within 24-48 hours.',
+          enquiryMessages.email,
       });
       setFormData({
         name: '',
@@ -110,7 +120,7 @@ export default function BookingFlap() {
     <>
       {/* Tab stuck to the right edge, always visible */}
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => { lastChannelRef.current = null; setConfirmationChannel(null); setSubmitStatus({ type: null, message: '' }); setIsOpen(true); }}
         aria-label="Open booking form"
         className="fixed right-0 top-1/2 -translate-y-1/2 z-[90] bg-gradient-to-b from-[#0A60CF] via-[#8F1ED2] to-[#C404CB] text-white py-6 px-2.5 rounded-l-sm shadow-lg hover:pr-4 transition-all duration-300 font-sans text-xs tracking-widest uppercase flex flex-col items-center"
         style={{ writingMode: 'vertical-rl' }}
@@ -150,6 +160,20 @@ export default function BookingFlap() {
           </div>
 
           <form onSubmit={handleSubmit} className="booking-form">
+            {confirmationChannel ? (
+              <div className="booking-thanks" role="status" aria-live="polite">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#8F1ED2]/10 text-[#8F1ED2]">
+                  <Heart className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 ref={confirmationHeadingRef} tabIndex={-1} className="font-elegant text-3xl text-[#33333F] mb-3 focus:outline-none">Thank you for reaching out!</h3>
+                <p className="text-sm leading-relaxed text-[#626276]">{enquiryMessages[confirmationChannel]}</p>
+                <button type="button" className="mt-5 text-sm font-medium text-[#8F1ED2] underline underline-offset-4"
+                  onClick={() => { setConfirmationChannel(null); setSubmitStatus({ type: null, message: '' }); }}>
+                  Back to enquiry
+                </button>
+              </div>
+            ) : (
+            <>
             <div className="booking-fields-row">
               <div>
                 <label htmlFor="booking-name" className="booking-label">Your Name *</label>
@@ -206,8 +230,10 @@ export default function BookingFlap() {
                 <Send className="w-4 h-4 shrink-0" />
                 {isSubmitting ? 'Sending...' : 'Email enquiry'}
               </button>
-              <EnquiryWhatsAppLink details={formData} showHint={false} compact />
+              <EnquiryWhatsAppLink details={formData} showHint={false} compact onOpen={() => { lastChannelRef.current = 'whatsapp'; setConfirmationChannel('whatsapp'); setSubmitStatus({ type: null, message: '' }); }} />
             </div>
+            </>
+            )}
           </form>
         </aside>
       </div>

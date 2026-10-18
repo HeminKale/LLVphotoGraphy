@@ -79,6 +79,7 @@
   .booking-field::placeholder { color: #6b7280; opacity: 1; }
   .booking-field:focus { outline: none; border-color: #8f1ed2; box-shadow: 0 0 0 2px rgb(143 30 210 / 10%); }
   .booking-message { height: var(--booking-message-height); padding-top: 10px; padding-bottom: 10px; resize: none; }
+  .booking-thanks { padding: clamp(16px, 5dvh, 40px) 8px; text-align: center; }
   .booking-status { padding: 8px 10px; line-height: 20px; }
   .booking-actions > button, .booking-actions a { min-height: var(--booking-control-height); padding: 0 8px; border-radius: 6px; font-size: 14px; line-height: 20px; }
 

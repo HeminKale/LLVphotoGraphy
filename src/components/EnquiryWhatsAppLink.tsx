@@ -10,7 +10,7 @@ interface EnquiryDetails {
   message: string;
 }
 
-export default function EnquiryWhatsAppLink({ details, showHint = true, compact = false }: { details: EnquiryDetails; showHint?: boolean; compact?: boolean }) {
+export default function EnquiryWhatsAppLink({ details, showHint = true, compact = false, onOpen }: { details: EnquiryDetails; showHint?: boolean; compact?: boolean; onOpen?: () => void }) {
   const message = [
     `Hi ${studio.name}, I'd like to enquire about a shoot.`,
     ...Object.entries({
@@ -23,6 +23,7 @@ export default function EnquiryWhatsAppLink({ details, showHint = true, compact 
     <div className={compact ? 'min-w-0' : 'space-y-2'}>
       <a
         href={`https://wa.me/${studio.whatsappNumber}?text=${encodeURIComponent(message)}`}
+        onClick={() => { if (onOpen) window.setTimeout(onOpen, 0); }}
         aria-label="Send enquiry via WhatsApp"
         target="_blank"
         rel="noopener noreferrer"

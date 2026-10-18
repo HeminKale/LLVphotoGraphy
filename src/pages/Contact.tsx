@@ -1,11 +1,13 @@
-import { useState, FormEvent } from 'react';
+import { useRef, useState, FormEvent } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { sendEnquiry } from '../lib/sendEnquiry';
 import { eventTypes } from '../data/studio';
+import { enquiryMessages } from '../data/enquiryMessages';
 import EnquiryWhatsAppLink from '../components/EnquiryWhatsAppLink';
 import FAQ from '../components/FAQ';
 
 export default function Contact() {
+  const lastChannelRef = useRef<'email' | 'whatsapp' | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,6 +33,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    lastChannelRef.current = 'email';
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
@@ -48,12 +51,13 @@ export default function Contact() {
     );
 
     setIsSubmitting(false);
+    if (lastChannelRef.current !== 'email') return;
 
     if (result.ok) {
       setSubmitStatus({
         type: 'success',
         message:
-          'Your enquiry has been accepted for email delivery. We will get back to you within 24-48 hours at the email or phone number you provided.',
+          enquiryMessages.email,
       });
       setFormData({
         name: '',
@@ -170,7 +174,7 @@ export default function Contact() {
                   <ul className="space-y-2 text-[#A9A0C4] text-sm">
                     <li className="flex gap-2">
                       <span className="text-[#8F1ED2]">•</span>
-                      <span>Response within 24-48 hours</span>
+                      <span>Email response within 24 hours</span>
                     </li>
                     <li className="flex gap-2">
                       <span className="text-[#8F1ED2]">•</span>
@@ -340,7 +344,7 @@ export default function Contact() {
                   )}
                 </button>
 
-                <div className="mt-4"><EnquiryWhatsAppLink details={formData} /></div>
+                <div className="mt-4"><EnquiryWhatsAppLink details={formData} onOpen={() => { lastChannelRef.current = 'whatsapp'; setSubmitStatus({ type: 'success', message: enquiryMessages.whatsapp }); }} /></div>
 
                 <p className="text-[#77778A] text-xs mt-4 flex items-start gap-1.5">
                   <Send className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
