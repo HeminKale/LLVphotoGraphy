@@ -2,7 +2,12 @@
 declare(strict_types=1);
 require __DIR__ . '/../public/api/enquiry-handler.php';
 
-$config = ['resend_api_key' => 'test-key', 'from_email' => 'Studio <studio@example.com>', 'to_email' => 'owner@example.com'];
+$config = [
+    'transport' => 'smtp', 'smtp_host' => 'smtp.hostinger.com', 'smtp_port' => 465,
+    'smtp_encryption' => 'ssl', 'smtp_username' => 'studio@example.com',
+    'smtp_password' => 'test-password', 'from_email' => 'studio@example.com',
+    'from_name' => 'Studio', 'to_email' => 'owner@example.com',
+];
 $valid = ['formType' => 'Contact Form', 'fields' => [
     ['label' => 'Name', 'value' => 'Test Visitor'],
     ['label' => 'Email', 'value' => 'visitor@example.com'],
@@ -47,9 +52,9 @@ run_test('invalid email, blank fields and impossible dates are rejected', static
 run_test('recipient is fixed, reply-to is validated and email HTML is escaped', static function () use ($valid, $handle) {
     $sent = null;
     $payload = array_merge($valid, ['to' => 'attacker@example.com', 'replyTo' => 'attacker@example.com']);
-    [$status, $body] = $handle($payload, static function ($mail, $key) use (&$sent): bool {
+    [$status, $body] = $handle($payload, static function ($mail, $mailConfig) use (&$sent): bool {
         $sent = $mail;
-        check($key === 'test-key', 'Wrong provider key');
+        check($mailConfig['smtp_username'] === 'studio@example.com', 'Wrong SMTP configuration');
         return true;
     });
     check($status === 200 && $body['ok'] === true, 'Successful acceptance not reported');
@@ -86,4 +91,36 @@ run_test('file-backed rate limit resets after ten minutes', static function () {
         foreach (glob($directory . '/*.json') as $file) unlink($file);
         rmdir($directory);
     }
+});
+
+run_test('SMTP requires credentials and secure settings while Resend requires its own key', static function () use ($config, $valid, $never) {
+    foreach ([['smtp_password' => ''], ['smtp_encryption' => ''], ['smtp_port' => 25], ['from_email' => 'invalid'], ['transport' => 'unknown'], ['transport' => 'resend']] as $override) {
+        $settings = array_merge($config, $override);
+        check(llv_handle_enquiry('POST', 'application/json', json_encode($valid), $settings, $never)[0] === 503, 'Incomplete or insecure configuration accepted');
+    }
+    $settings = array_merge($config, ['transport' => 'resend', 'resend_api_key' => 'test-key']);
+    check(llv_handle_enquiry('POST', 'application/json', json_encode($valid), $settings, static function ($message, $settings): bool {
+        check($settings['resend_api_key'] === 'test-key', 'Missing Resend key');
+        return true;
+    })[0] === 200, 'Optional Resend transport rejected');
+});
+run_test('bundled PHPMailer builds authenticated encrypted SMTP mail with fixed recipient', static function () use ($config) {
+    require_once __DIR__ . '/../public/api/smtp-transport.php';
+    $message = [
+        'to' => ['owner@example.com'], 'reply_to' => 'visitor@example.com',
+        'subject' => 'Website enquiry', 'html' => '<p>Family shoot</p>', 'text' => 'Family shoot',
+    ];
+    $mail = llv_create_smtp_mailer($message, $config);
+    check($mail->Mailer === 'smtp' && $mail->SMTPAuth === true, 'Authenticated SMTP not selected');
+    check($mail->Host === 'smtp.hostinger.com' && $mail->Port === 465 && $mail->SMTPSecure === 'ssl', 'Incorrect SMTP endpoint or encryption');
+    check($mail->SMTPOptions['ssl']['verify_peer'] && !$mail->SMTPOptions['ssl']['allow_self_signed'], 'TLS verification weakened');
+    check($mail->SMTPDebug === 0, 'SMTP debugging could expose credentials');
+    check($mail->From === 'studio@example.com' && $mail->Username === $mail->From, 'Wrong sender');
+    check($mail->getToAddresses() === [['owner@example.com', '']], 'Wrong SMTP recipient');
+    check(array_column($mail->getReplyToAddresses(), 0) === ['visitor@example.com'], 'Reply-To is missing');
+    check($mail->preSend(), 'Unable to build MIME message');
+    $mime = $mail->getSentMIMEMessage();
+    check(str_contains($mime, 'multipart/alternative') && str_contains($mime, 'Family shoot'), 'Multipart mail missing');
+    $mail = llv_create_smtp_mailer($message, array_merge($config, ['smtp_port' => 587, 'smtp_encryption' => 'tls']));
+    check($mail->Port === 587 && $mail->SMTPSecure === 'tls', 'STARTTLS option not configured');
 });

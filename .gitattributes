@@ -1,0 +1,3 @@
+
+# Preserve upstream bytes for the bundled mail library checksum manifest.
+public/api/lib/phpmailer/** -text

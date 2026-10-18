@@ -8,5 +8,5 @@ test('Hostinger PHP enquiry validation, routing, delivery and rate-limit tests',
   const result = spawnSync(runtime.command, [...runtime.args, 'tests/enquiry.test.php'], { encoding: 'utf8' });
   assert.ifError(result.error);
   assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
-  assert.equal(result.stdout.match(/^PASS:/gm)?.length, 9, result.stdout);
+  assert.equal(result.stdout.match(/^PASS:/gm)?.length, 11, result.stdout);
 });

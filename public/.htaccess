@@ -7,6 +7,9 @@ DirectoryIndex index.html
   # Never expose private settings if accidentally uploaded to the web root.
   RewriteRule (^|/)(\.|enquiry-config\.php$|package(?:-lock)?\.json$|.*\.example$) - [F,L,NC]
 
+  # Mail library is included by PHP and does not need a public URL.
+  RewriteRule ^api/lib/ - [F,L]
+
   # Keep the public URLs without trailing slashes, serving generated page metadata.
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteCond %{REQUEST_URI} ^/(about|portfolio|contact|testimonials)/$

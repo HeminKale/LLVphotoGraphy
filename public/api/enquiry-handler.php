@@ -6,10 +6,26 @@ function llv_handle_enquiry(string $method, string $contentType, string $raw, ar
 {
     if ($method === 'OPTIONS') return [204, null];
     if ($method !== 'POST') return [405, ['error' => 'Method not allowed']];
-    foreach (['resend_api_key', 'from_email', 'to_email'] as $key) {
+    $transport = $config['transport'] ?? 'smtp';
+    if (!in_array($transport, ['smtp', 'resend'], true)) {
+        return [503, ['error' => 'Email delivery is not configured yet.']];
+    }
+    $required = $transport === 'smtp'
+        ? ['smtp_host', 'smtp_username', 'smtp_password', 'from_email', 'to_email']
+        : ['resend_api_key', 'from_email', 'to_email'];
+    foreach ($required as $key) {
         if (!is_string($config[$key] ?? null) || trim($config[$key]) === '') {
             return [503, ['error' => 'Email delivery is not configured yet.']];
         }
+    }
+    if (!filter_var($config['from_email'], FILTER_VALIDATE_EMAIL)
+        || !filter_var($config['to_email'], FILTER_VALIDATE_EMAIL)
+        || preg_match('/[\r\n]/', $config['from_name'] ?? 'Love Light Vision')) {
+        return [503, ['error' => 'Email delivery is not configured yet.']];
+    }
+    if ($transport === 'smtp' && (!in_array($config['smtp_encryption'] ?? 'ssl', ['ssl', 'tls'], true)
+        || !in_array($config['smtp_port'] ?? 465, [465, 587], true))) {
+        return [503, ['error' => 'Email delivery is not configured yet.']];
     }
     if (stripos($contentType, 'application/json') === false) {
         return [415, ['error' => 'Use an application/json request.']];
@@ -54,7 +70,7 @@ function llv_handle_enquiry(string $method, string $contentType, string $raw, ar
         $text .= $field['label'] . ': ' . $field['value'] . "\n";
     }
     $mail = [
-        'from' => $config['from_email'],
+        'from' => ($config['from_name'] ?? 'Love Light Vision') . ' <' . $config['from_email'] . '>',
         'to' => [$config['to_email']],
         'reply_to' => $replyTo,
         'subject' => 'Love Light Vision: ' . $input['formType'] . ' enquiry',
@@ -65,16 +81,25 @@ function llv_handle_enquiry(string $method, string $contentType, string $raw, ar
         if ($allowRequest !== null && !$allowRequest()) {
             return [429, ['error' => 'Too many enquiries. Please try again later or contact us on WhatsApp.']];
         }
-        $send = $sender ?? 'llv_send_resend';
-        if (!$send($mail, $config['resend_api_key'])) {
+        $send = $sender ?? 'llv_send_email';
+        if (!$send($mail, $config)) {
             return [502, ['error' => 'Unable to send email. Please use WhatsApp or email the studio directly.']];
         }
-        // This confirms provider acceptance. Check Resend for the final delivery event.
+        // This confirms mail-server acceptance, not final inbox delivery.
         return [200, ['ok' => true]];
     } catch (Throwable $error) {
         error_log('Love Light Vision: enquiry email could not be sent.');
         return [502, ['error' => 'Email is currently unavailable. Please use WhatsApp or email the studio directly.']];
     }
+}
+
+function llv_send_email(array $mail, array $config): bool
+{
+    if (($config['transport'] ?? 'smtp') === 'resend') {
+        return llv_send_resend($mail, $config['resend_api_key']);
+    }
+    require_once __DIR__ . '/smtp-transport.php';
+    return llv_create_smtp_mailer($mail, $config)->send();
 }
 
 function llv_send_resend(array $mail, string $apiKey): bool
